@@ -1,0 +1,29 @@
+{
+  "name": "@rdf-library/qudt",
+  "version": "2.1.25",
+  "description": "Quantities, Units, Dimensions, and Data Types (QUDT)",
+  "license": "CC-BY-4.0",
+  "author": "QUDT.org",
+  "ontologies": {
+    "http://qudt.org/2.1/schema/datatype": "schema/datatype.ttl",
+    "http://qudt.org/2.1/schema/extensions/functions": "schema/extensions/functions.ttl",
+    "http://qudt.org/2.1/schema/facade/qudt": "schema/facade/qudt.ttl",
+    "http://qudt.org/2.1/schema/qudt": "schema/qudt.ttl",
+    "http://qudt.org/2.1/schema/shacl/qudt": "schema/shacl/qudt.ttl",
+    "http://qudt.org/2.1/vocab/constant": "vocab/constant.ttl",
+    "http://qudt.org/2.1/vocab/currency": "vocab/currency.ttl",
+    "http://qudt.org/2.1/vocab/dimensionvector": "vocab/dimensionvector.ttl",
+    "http://qudt.org/2.1/vocab/prefix": "vocab/prefix.ttl",
+    "http://qudt.org/2.1/vocab/quantitykind": "vocab/quantitykind.ttl",
+    "http://qudt.org/2.1/vocab/soqk": "vocab/soqk.ttl",
+    "http://qudt.org/2.1/vocab/sou": "vocab/sou.ttl",
+    "http://qudt.org/2.1/vocab/unit": "vocab/unit.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dtype": "1.*",
+    "@rdf-library/shacl": "1.*",
+    "@rdf-library/skos": "1.*",
+    "@rdf-library/spl": "1.*",
+    "@rdf-library/vaem": "2.*"
+  }
+}
