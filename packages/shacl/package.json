@@ -1,0 +1,14 @@
+{
+  "name": "@rdf-library/shacl",
+  "version": "1.0.0",
+  "description": "Shapes Constraint Language (SHACL)",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/ns/shacl": "shacl.ttl",
+    "http://www.w3.org/ns/shacl-shacl": "shacl-shacl.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/owl": "2.*"
+  }
+}
