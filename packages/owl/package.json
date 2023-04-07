@@ -1,0 +1,14 @@
+{
+  "name": "@rdf-library/owl",
+  "version": "2.0.0",
+  "description": "Web Ontology Language (OWL)",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/2002/07/owl": "owl.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/rdfs": "1.*"
+  }
+}

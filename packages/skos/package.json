@@ -1,0 +1,14 @@
+{
+  "name": "@rdf-library/skos",
+  "version": "1.0.0",
+  "description": "Simple Knowledge Organization System (SKOS)",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/2004/02/skos/core": "skos.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*"
+  }
+}

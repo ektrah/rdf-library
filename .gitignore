@@ -1,0 +1,8 @@
+*.tgz
+*.user
+*~
+._*
+.DS_Store
+.vs
+node_modules
+package-lock.json

@@ -1,0 +1,7 @@
+*       text=auto
+*.owl   text eol=lf
+*.patch text eol=lf
+*.rdf   text eol=lf
+*.ttl   text eol=lf
+*.xml   text eol=lf
+*.xsd   text eol=lf

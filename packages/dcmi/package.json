@@ -1,0 +1,17 @@
+{
+  "name": "@rdf-library/dcmi",
+  "version": "2020.1.20",
+  "description": "DCMI Metadata Terms",
+  "license": "CC-BY-4.0",
+  "author": "DCMI",
+  "ontologies": {
+    "http://purl.org/dc/dcam/": "dublin_core_abstract_model.ttl",
+    "http://purl.org/dc/dcmitype/": "dublin_core_type.ttl",
+    "http://purl.org/dc/elements/1.1/": "dublin_core_elements.ttl",
+    "http://purl.org/dc/terms/": "dublin_core_terms.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/skos": "1.*"
+  }
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcam="http://purl.org/dc/dcam/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/">
+    <dcterms:title xml:lang="en">Metadata terms for vocabulary description</dcterms:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/">
+    <dcterms:publisher rdf:resource="http://purl.org/dc/aboutdcmi#DCMI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/">
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-06-14</dcterms:modified>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/VocabularyEncodingScheme">
+    <rdfs:label xml:lang="en">Vocabulary Encoding Scheme</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/VocabularyEncodingScheme">
+    <rdfs:comment xml:lang="en">An enumerated set of resources.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/VocabularyEncodingScheme">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/VocabularyEncodingScheme">
+    <rdfs:seeAlso rdf:resource="https://www.dublincore.org/specifications/dublin-core/2007/06/04/abstract-model/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/VocabularyEncodingScheme">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</dcterms:issued>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/VocabularyEncodingScheme">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcam/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/domainIncludes">
+    <rdfs:label xml:lang="en">Domain Includes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/domainIncludes">
+    <rdfs:comment xml:lang="en">A suggested class for subjects of this property.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/domainIncludes">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/domainIncludes">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-01-20</dcterms:issued>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/domainIncludes">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcam/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <rdfs:label xml:lang="en">Member Of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <rdfs:comment xml:lang="en">A relationship between a resource and a vocabulary encoding scheme which indicates that the resource is a member of a set.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <rdfs:range rdf:resource="http://purl.org/dc/dcam/VocabularyEncodingScheme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <rdfs:seeAlso rdf:resource="https://www.dublincore.org/specifications/dublin-core/2007/06/04/abstract-model/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</dcterms:issued>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/memberOf">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcam/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/rangeIncludes">
+    <rdfs:label xml:lang="en">Range Includes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/rangeIncludes">
+    <rdfs:comment xml:lang="en">A suggested class for values of this property.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/rangeIncludes">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/rangeIncludes">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-01-20</dcterms:issued>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/dcam/rangeIncludes">
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcam/"/>
+  </rdf:Description>
+</rdf:RDF>

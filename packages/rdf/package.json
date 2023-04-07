@@ -1,0 +1,15 @@
+{
+  "name": "@rdf-library/rdf",
+  "version": "1.1.0",
+  "description": "RDF Concepts (RDF)",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns": "rdf.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdfs": "1.*"
+  }
+}
