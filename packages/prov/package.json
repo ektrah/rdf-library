@@ -1,0 +1,13 @@
+{
+  "name": "@rdf-library/prov",
+  "version": "1.0.0",
+  "description": "W3C PROVenance Interchange",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/ns/prov": "prov.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/owl": "2.*"
+  }
+}
