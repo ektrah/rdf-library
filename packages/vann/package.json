@@ -1,0 +1,14 @@
+{
+  "name": "@rdf-library/vann",
+  "version": "2010.6.7",
+  "description": "Vocabulary for Annotating Vocabulary Descriptions (VANN)",
+  "license": "CC-BY-1.0",
+  "author": "Ian Davis",
+  "ontologies": {
+    "http://purl.org/vocab/vann/": "vann.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*"
+  }
+}
