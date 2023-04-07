@@ -1,0 +1,15 @@
+{
+  "name": "@rdf-library/bibo",
+  "version": "1.3.0",
+  "description": "Bibliographic Ontology (BIBO)",
+  "license": "CC-BY-4.0",
+  "author": "DCMI",
+  "ontologies": {
+    "http://purl.org/ontology/bibo/": "bibo.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/skos": "1.*"
+  }
+}
