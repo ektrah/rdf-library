@@ -1,0 +1,13 @@
+{
+  "name": "@rdf-library/sp",
+  "version": "1.5.1",
+  "description": "SPARQL Inferencing Notation (SPIN) - SPARQL Syntax",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://spinrdf.org/sp": "sp.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/owl": "2.*"
+  }
+}

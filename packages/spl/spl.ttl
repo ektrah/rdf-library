@@ -1,0 +1,4279 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns0: <http://spinrdf.org/spin#> .
+@prefix ns1: <http://spinrdf.org/spl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ns2: <http://spinrdf.org/sp#> .
+@prefix ns3: <http://spinrdf.org/arg#> .
+
+<http://spinrdf.org/spl>
+  a owl:Ontology, <http://spinrdf.org/spin#LibraryOntology> ;
+  owl:versionInfo "1.4.2" ;
+  owl:imports <http://spinrdf.org/spin> ;
+  rdfs:label "SPIN Standard Library" ;
+  rdfs:comment "A collection of generally useful SPARQL functions (expressed as SPIN functions), and SPIN templates. Also provides a top-level classification of functions, and definitions of the standard SPARQL functions." .
+
+<http://spinrdf.org/spl#UnionTemplate>
+  a rdfs:Class ;
+  rdfs:subClassOf <http://spinrdf.org/spin#Template> ;
+  rdfs:label "Union template" ;
+  rdfs:comment "This type can be used for templates that serve as the union (or \"collector\") of other templates. Union templates differ from other templates in that all spl:Arguments are optional. This means that union templates can be declared as subclasses of multiple other templates, yet when instantiated, only some of the arguments defined by the superclasses need to be filled in." .
+
+<http://spinrdf.org/spl#ConstraintTemplate>
+  a rdfs:Class ;
+  rdfs:subClassOf <http://spinrdf.org/spin#ConstructTemplate> ;
+  rdfs:label "Constraint template" ;
+  rdfs:comment "Metaclass for CONSTRUCT templates that create spin:ConstraintViolations and can be used as values of spin:constraint." .
+
+<http://spinrdf.org/spl#TestCase>
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+  rdfs:label "Test case" ;
+  rdfs:comment "A test to verify that a SPIN function or magic property works as expected, and to generate documentation of example uses of the function. Each TestCase consists of a SPARQL function call or an expression that can be executed with spin:eval, and an expected result. The test framework only needs to execute spin:eval on the expression and compare it with the expected result." ;
+  ns0:constraint [
+    a <http://spinrdf.org/spl#Argument> ;
+    rdfs:comment "The test expression or SELECT query (anything that can be evaluated with spin:eval)." ;
+    ns1:predicate ns1:testExpression
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The expected result of the test case, or nothing to indicate that an error is expected." ;
+    ns1:predicate ns1:testResult ;
+    ns1:optional true
+  ] .
+
+ns1:testExpression
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "test expression" .
+
+ns1:testResult
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "testResult" .
+
+ns1:predicate
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "predicate" .
+
+<http://spinrdf.org/arg#min>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+ns1:class
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "class" .
+
+<http://spinrdf.org/arg#class>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#property>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+ns1:minCount
+  a rdf:Property ;
+  rdfs:subPropertyOf ns1:count .
+
+ns1:count
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "count" .
+
+ns1:instance
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "instance" ;
+  rdfs:domain <http://spinrdf.org/sp#ModuleCall> .
+
+<http://spinrdf.org/arg#uriStart>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+ns1:defaultValue
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "default value" .
+
+<http://spinrdf.org/arg#minLength>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#instance>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#otherProperty>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+ns1:maxCount
+  a rdf:Property ;
+  rdfs:subPropertyOf ns1:count .
+
+ns1:optional
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:range xsd:boolean ;
+  rdfs:label "optional" .
+
+<http://spinrdf.org/arg#maxLength>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#maxCount>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#type>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#max>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+ns1:valueType
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> ;
+  rdfs:label "value type" .
+
+<http://spinrdf.org/arg#minCount>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/arg#pattern>
+  a rdf:Property ;
+  rdfs:subPropertyOf <http://spinrdf.org/sp#arg> .
+
+<http://spinrdf.org/sp#substr>
+  a ns0:Function ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The end index." ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate <http://spinrdf.org/sp#arg3> ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The start index." ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate <http://spinrdf.org/sp#arg2>
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate <http://spinrdf.org/sp#arg1>
+  ] ;
+  rdfs:comment "Gets the sub-string of a given string. The index of the first character is 1." ;
+  rdfs:label "substr" ;
+  ns0:symbol "SUBSTR" ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-substr> ;
+  ns0:returnType xsd:string ;
+  rdfs:subClassOf ns1:StringFunctions .
+
+ns1:StringFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "String functions" ;
+  rdfs:comment "A collection of functions that return strings." ;
+  ns0:abstract true .
+
+ns1:Test-instanceOf-typedString
+  a ns1:TestCase ;
+  ns1:testResult true ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 xsd:string ;
+    ns2:arg1 "test"
+  ] .
+
+ns2:bnode
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-bnode> ;
+  rdfs:label "bnode" ;
+  rdfs:comment "Constructs a blank node that is distinct from all blank nodes in the dataset being queried and distinct from all blank nodes created by calls to this constructor for other query solutions. If the no argument form is used, every call results in a distinct blank node. If the form with a simple literal is used, every call results in distinct blank nodes for different simple literals, and the same blank node for calls with the same simple literal within expressions for one solution mapping. This functionality is compatible with the treatment of blank nodes in SPARQL CONSTRUCT templates." ;
+  ns0:symbol "BNODE" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "A literal input node." ;
+    ns1:predicate ns2:arg1 ;
+    ns1:optional true
+  ] .
+
+ns1:OntologyFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "Ontology functions" ;
+  rdfs:comment "A collection of functions performing ontology-related operations." ;
+  ns0:abstract true .
+
+ns1:Test-instanceOf-untypedString
+  a ns1:TestCase ;
+  ns1:testResult true ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 xsd:string ;
+    ns2:arg1 "test"
+  ] .
+
+ns2:md5
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-md5> ;
+  rdfs:label "md5" ;
+  rdfs:comment "Returns the MD5 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case." ;
+  ns0:symbol "MD5" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input literal." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:MiscFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "Misc functions" ;
+  rdfs:comment "A collection of functions that are difficult to categorize." ;
+  ns0:abstract true .
+
+ns1:RunTestCases
+  a ns0:SelectTemplate ;
+  rdfs:subClassOf ns0:SelectTemplates ;
+  rdfs:label "Run test cases" ;
+  rdfs:comment "Runs all spl:TestCases on the current model." ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid11
+     _:genid15
+     _:genid21
+     _:genid26
+   ) ;
+    ns2:resultVariables (
+     _:genid40
+     _:genid42
+     _:genid44
+   )
+  ] .
+
+ns2:contains
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-contains> ;
+  rdfs:label "contains" ;
+  rdfs:comment "Returns an xsd:boolean indicating whether or not the value of ?arg1 contains (at the beginning, at the end, or anywhere within) at least one sequence of collation units that provides a minimal match to the collation units in the value of ?arg2, according to the collation that is used." ;
+  ns0:symbol "CONTAINS" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The sub-string to search for in the input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:rand
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#idp3722352> ;
+  rdfs:label "rand" ;
+  rdfs:comment "Returns a number between 0 (inclusive) and 1.0e0 (exclusive). Different numbers can be produced every time this function is invoked. Numbers should be produced with approximately equal probability." ;
+  ns0:symbol "RAND" ;
+  ns0:returnType xsd:double .
+
+ns1:MathematicalFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "Mathematical functions" ;
+  rdfs:comment "A collection of functions operating on numbers." ;
+  ns0:abstract true .
+
+ns2:floor
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-floor> ;
+  rdfs:label "floor" ;
+  rdfs:comment "Returns the largest (closest to positive infinity) number with no fractional part that is not greater than the value of ?arg1. An error is raised if ?arg1 is not a numeric value." ;
+  ns0:symbol "floor" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The value to get the floor of." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:NonExistencePropertyPairConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyPairConstraintTemplates ;
+  rdfs:label "Non-existence property pair constraint" ;
+  ns0:labelTemplate "The property {?property} must have no values as long as {?otherProperty} has none" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid52
+     _:genid59
+     _:genid66
+   ) ;
+    ns2:templates (
+     _:genid74
+     _:genid77
+     _:genid79
+     _:genid82
+   )
+  ] .
+
+ns1:PropertyPairConstraintTemplates
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Property pair constraint templates" ;
+  rdfs:comment "Abstract base class for templates that take two properties as arguments and establish a relationship between them." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The \"other\" property." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate <http://spinrdf.org/arg#otherProperty>
+  ] ;
+  ns0:abstract true .
+
+ns1:PropertyConstraintTemplates
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:ConstraintTemplates ;
+  rdfs:label "Property constraint templates" ;
+  rdfs:comment "Abstract superclass of constraint templates that constrain exactly one property." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The property being constrained." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate <http://spinrdf.org/arg#property>
+  ] ;
+  ns0:abstract true .
+
+ns1:ConstraintTemplates
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns0:ConstructTemplates ;
+  rdfs:label "Constraint templates" ;
+  rdfs:comment "Abstract superclass of templates that can be used as spin:constraints. The subclasses are expected to construct spin:ConstraintViolations and use ?this to talk about the instances of the associated class." ;
+  ns0:abstract true .
+
+ns2:ceil
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-ceil> ;
+  rdfs:label "ceil" ;
+  rdfs:comment "Returns the smallest (closest to negative infinity) number with no fractional part that is not less than the value of arg. An error is raised if ?arg1 is not a numeric value." ;
+  ns0:symbol "ceil" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The number to get the ceiling of." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:hasValueOfType
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "hasValueOfType" ;
+  rdfs:comment "Checks whether a given subject (?arg1) has at least one value of a given type (?arg3) for a given property (?arg2) or one of its sub-properties." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the type to match against" ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns2:arg3
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the expected property" ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the subject that is expected to have the value" ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where (
+     _:genid90
+     _:genid94
+     _:genid98
+   )
+  ] .
+
+ns1:BooleanFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "Boolean functions" ;
+  rdfs:comment "A collection of functions that return a boolean value (true or false)." ;
+  ns0:abstract true .
+
+ns1:isUntypedLiteral
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "isUntypedLiteral" ;
+  rdfs:comment "Checks whether a given literal is untyped. This function was introduced because the built-in datatype operand in SPARQL casts untyped literals to xsd:string, making it impossible to check it this way. This function here uses a work-around using sameTerm instead." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The literal to test." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where ( _:genid104 )
+  ] .
+
+ns1:StringLengthPropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "String length property constraint" ;
+  rdfs:comment "Represents a constraint that narrows down a property by a minimum and maximum length of the characters of the string representation of its values. This constraint is typically used for string literals, but may also be useful for integers (e.g. 4 digit numbers), and may even be used to limit the length of URIs." ;
+  ns0:labelTemplate "Values of {?property} must have between {?minLength} and {?maxLength} characters" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The minimum number of characters (default to 0)." ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate <http://spinrdf.org/arg#minLength> ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The maximum number of characters (defaults to unlimited)." ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate <http://spinrdf.org/arg#maxLength> ;
+    ns1:optional true
+  ] ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid114
+     _:genid118
+     _:genid124
+     _:genid137
+   ) ;
+    ns2:templates (
+     _:genid147
+     _:genid150
+     _:genid152
+     _:genid155
+     _:genid158
+   )
+  ] .
+
+ns2:hours
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "hours" ;
+  rdfs:comment "Extracts the hours from a date/time literal." ;
+  ns0:symbol "hours" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The dateTime or time argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:DateFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "Date functions" ;
+  rdfs:comment "A collection of functions that operate on date/time literals." ;
+  ns0:abstract true .
+
+ns2:add
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "add" ;
+  rdfs:comment "Returns the arithmetic sum of its operands." ;
+  ns0:symbol "+" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second number" ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first number" ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns0:violatesConstraints ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The class to get the constraints of." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The instance to check." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] .
+ns1:subPropertyOf
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "sub property of" ;
+  rdfs:comment "Checks whether a given property (?arg1) is a (transitive) sub-property of another property (?arg2)." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The potential super-property." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The potential sub-property." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where ( _:genid169 )
+  ] .
+
+ns1:ConstructDefaultValues
+  a ns0:ConstructTemplate ;
+  rdfs:subClassOf ns0:ConstructTemplates ;
+  rdfs:label "Construct default values" ;
+  rdfs:comment "This template can be attached as spin:constructor to a root class such as rdfs:Resource to ensure that SPIN processors assign default values to certain properties. Looks for any templates attached as spin:constraints to the types of ?this and then assigns their declared spl:defaultValues." ;
+  ns0:labelTemplate "Construct default values" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid173
+     _:genid176
+     _:genid181
+     _:genid185
+     _:genid189
+   ) ;
+    ns2:templates ( _:genid193 )
+  ] .
+
+ns1:Test-instanceOf-rdfsClassInheritance
+  a ns1:TestCase ;
+  ns1:testResult true ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 rdfs:Class ;
+    ns2:arg1 owl:Restriction
+  ] .
+
+ns1:subjectCount
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "subjectCount" ;
+  rdfs:comment "Gets the number of values of a given property (?arg1) at a given object (?arg2). The result is the number of matches of (?subject, ?arg1, ?arg2)." ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the object to get the number of subjects of" ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the predicate to get the number of subjects of" ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid201 ) ;
+    ns2:resultVariables ( _:genid204 )
+  ] .
+
+ns2:iri
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "IRI" ;
+  rdfs:comment "Creates a IRI resource (node) from a given IRI string (?arg1)." ;
+  ns0:symbol "IRI" ;
+  ns0:returnType rdfs:Resource ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The IRI string to convert to a resource." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:divide
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "divide" ;
+  rdfs:comment "Returns the arithmetic quotient of its operands." ;
+  ns0:symbol "/" ;
+  ns0:returnType rdfs:Literal ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:TypePropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Type property constraint" ;
+  rdfs:comment "Represents a constraint that narrows down the rdf:type of the values of a property." ;
+  ns0:labelTemplate "Values of {?property} must have the type {?type}" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The class that the values must have as their rdf:type (or a subclass thereof)." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate <http://spinrdf.org/arg#type>
+  ] ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid213
+     _:genid217
+     _:genid223
+   ) ;
+    ns2:templates (
+     _:genid231
+     _:genid234
+     _:genid236
+     _:genid239
+     _:genid242
+   )
+  ] .
+
+ns1:ObjectCountPropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:CountPropertyConstraintTemplates ;
+  rdfs:label "Object count property constraint" ;
+  rdfs:comment "Represents a constraint that can be attached to a class to specify that a given property must have between min and max values." ;
+  ns0:labelTemplate "The property {?property} must have between {?minCount} and {?maxCount} values" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid248
+     _:genid253
+     _:genid268
+   ) ;
+    ns2:templates (
+     _:genid274
+     _:genid277
+     _:genid279
+     _:genid282
+   )
+  ] .
+
+ns1:CountPropertyConstraintTemplates
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Count property constraint templates" ;
+  rdfs:comment "Abstract superclass of property constraints that compare the number of values with either min or max count." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The minimum number of values that the property must have." ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate <http://spinrdf.org/arg#minCount> ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The maximum number of values that the property must have." ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate <http://spinrdf.org/arg#maxCount> ;
+    ns1:optional true
+  ] ;
+  ns0:abstract true .
+
+ns1:UniquePropertyValueConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Unique property value constraint" ;
+  rdfs:comment "Reports an error if the given property has a value that is also used elsewhere, for the same property." ;
+  ns0:labelTemplate "Values of {?property} must be unique" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid286
+     _:genid290
+     _:genid302
+   ) ;
+    ns2:templates (
+     _:genid308
+     _:genid311
+     _:genid314
+     _:genid316
+     _:genid319
+   )
+  ] .
+
+ns1:Test-instanceOf-rdfsLiteral
+  a ns1:TestCase ;
+  ns1:testResult true ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 rdfs:Literal ;
+    ns2:arg1 "test"
+  ] .
+
+ns1:Test-instanceOf-typedString-false
+  a ns1:TestCase ;
+  ns1:testResult false ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 xsd:integer ;
+    ns2:arg1 "test"
+  ] .
+
+ns2:uri
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "URI" ;
+  rdfs:comment "Equivalent to IRI." ;
+  ns0:symbol "URI" ;
+  ns0:returnType rdfs:Resource ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The IRI string to convert to a resource." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:struuid
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:label "struuid" ;
+  rdfs:comment "Returns a string that is the scheme specific part of UUID. That is, as a simple literal, the result of generating a UUID, converting to a simple literal and removing the initial urn:uuid:." ;
+  ns0:symbol "STRUUID" ;
+  ns0:returnType xsd:string .
+
+ns2:le
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "le" ;
+  rdfs:comment "Returns true if ?arg1 <= ?arg2." ;
+  ns0:symbol "<=" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:seconds
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "seconds" ;
+  rdfs:comment "Extracts the seconds from a date/time literal." ;
+  ns0:symbol "seconds" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The dateTime or time argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:tz
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-tz> ;
+  rdfs:label "tz" ;
+  rdfs:comment "Returns the timezone part of ?arg1 as a simple literal. Returns the empty string if there is no timezone." ;
+  ns0:symbol "TZ" .
+
+ns2:mul
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "mul" ;
+  rdfs:comment "Returns the arithmetic product of its operands." ;
+  ns0:symbol "*" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:strlang
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-strlang> ;
+  rdfs:label "strlang" ;
+  rdfs:comment "Takes a string (?arg1) and a language (?arg2) and constructs a literal with a corresponding language tag." ;
+  ns0:symbol "STRLANG" ;
+  ns0:returnType rdf:langString ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The language tag, e.g. \"en-AU\"." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The string value." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:strends
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-ends> ;
+  rdfs:label "strends" ;
+  rdfs:comment "Returns true if the lexical form of ?arg1 ends with the lexical form of ?arg2, otherwise it returns false." ;
+  ns0:symbol "STRENDS" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The sub-string that the input string is supposed to end with." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:RegexPropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Regex property constraint" ;
+  ns0:labelTemplate "Values of {?property} must match the regular expression {?pattern}" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The regular expression to match." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate <http://spinrdf.org/arg#pattern>
+  ] ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid336
+     _:genid340
+     _:genid347
+   ) ;
+    ns2:templates (
+     _:genid354
+     _:genid357
+     _:genid359
+     _:genid362
+   )
+  ] .
+
+ns1:min
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "min" ;
+  rdfs:comment "Takes two arguments and returns the smaller one of them." ;
+  ns0:returnType rdfs:Literal ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The second argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The first argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid368 ) ;
+    ns2:resultVariables ( _:genid373 )
+  ] .
+
+ns2:strdt
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-strdt> ;
+  rdfs:label "strdt" ;
+  rdfs:comment "Constructs a literal with lexical form and type as specified by the arguments." ;
+  ns0:symbol "STRDT" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The datatype of the new literal." ;
+    ns1:valueType rdfs:Datatype ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The lexical form of the new literal." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:hasArgument
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "has argument" ;
+  rdfs:comment "Checks if a given module class (?module) has at least one declared spl:Argument." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The module class to check." ;
+    ns1:valueType ns0:Module ;
+    ns1:predicate ns1:class
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where (
+     _:genid379
+     _:genid384
+     _:genid388
+   )
+  ] .
+
+ns1:Argument
+  a ns0:ConstructTemplate ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the value type of the argument" ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns1:valueType ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the default value for the argument" ;
+    ns1:predicate ns1:defaultValue ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the property holding the values of each function call" ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns1:predicate
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "a comment describing the argument" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate rdfs:comment ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "indicates whether the argument is optional" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns1:optional ;
+    ns1:optional true
+  ] ;
+  rdfs:comment "Provides metadata about an argument of a SPIN Function or Template. Arguments wrap a given rdf:Property (predicate) and specify its value type and whether the argument is optional. When used as spin:constraint, the body of this template will verify that a non-optional value exists and that it has the specified value type. Arguments that have been declared spl:optional true become optional if the type of ?this is spl:UnionTemplate. " ;
+  rdfs:label "Argument" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid394
+     _:genid398
+   ) ;
+    ns2:templates (
+     _:genid465
+     _:genid468
+     _:genid470
+     _:genid473
+   )
+  ] ;
+  ns0:labelTemplate "Argument {?predicate} : {?valueType}" ;
+  rdfs:subClassOf ns0:ConstructTemplates .
+
+ns2:ucase
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-ucase> ;
+  rdfs:label "UCASE" ;
+  rdfs:comment "Converts a string to upper case characters." ;
+  ns0:symbol "UCASE" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:round
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-round> ;
+  rdfs:label "round" ;
+  rdfs:comment "Returns the number with no fractional part that is closest to the argument. If there are two such numbers, then the one that is closest to positive infinity is returned. An error is raised if ?arg1 is not a numeric value." ;
+  ns0:symbol "round" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The number to round." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:Test-instanceOf-lingualString
+  a ns1:TestCase ;
+  ns1:testResult true ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 xsd:string ;
+    ns2:arg1 "test"@en
+  ] .
+
+ns2:minutes
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "minutes" ;
+  rdfs:comment "Extracts the minutes from a date/time literal." ;
+  ns0:symbol "minutes" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The dateTime or time argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:sha1
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-sha1> ;
+  rdfs:label "sha1" ;
+  rdfs:comment "Returns the SHA1 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case." ;
+  ns0:symbol "SHA1" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input literal." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:sub
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "sub" ;
+  rdfs:comment "Returns the arithmetic difference of its operands." ;
+  ns0:symbol "-" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:year
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "year" ;
+  rdfs:comment "Extracts the year from a date/time literal." ;
+  ns0:symbol "year" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The date or dateTime argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:primaryKeyURIStart
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "primary key URI start" ;
+  rdfs:comment "Gets the URI start declared as part of a primary key declaration for a given class, using spl:PrimaryKeyPropertyConstraint." ;
+  ns0:returnType rdf:Property ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The class to get the primary key of." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate <http://spinrdf.org/arg#class>
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid489
+     _:genid494
+     _:genid498
+     _:genid569
+   ) ;
+    ns2:resultVariables ( _:genid573 )
+  ] .
+
+ns1:PrimaryKeyPropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Primary key property constraint" ;
+  rdfs:comment "Specifies that the given property is a primary key for instances of the associated class (and its subclasses). If a property has been declared to be the primary key then each instance of the class must have exactly one value for that property. Furthermore, the URIs of those instances must start with a given string (arg:uriStart), followed by the URL-encoded primary key value. For example if arg:uriStart is \"http://example.org/country-\" and the primary key for an instance is \"de\" then the URI must be \"http://example.org/country-de\". Finally, as a result of the URI policy, there can not be any other instance with the same value under the same primary key policy." ;
+  ns0:labelTemplate "The property {?property} is the primary key and URIs start with {?uriStart}" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The start of the URIs of well-formed instances of the associated class." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate <http://spinrdf.org/arg#uriStart>
+  ], [
+    a ns2:Ask ;
+    rdfs:comment "rdfs:label cannot be used as primary key" ;
+    ns2:where ( _:genid503 )
+  ] ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where ( _:genid506 ) ;
+    ns2:templates (
+     _:genid558
+     _:genid561
+     _:genid564
+     _:genid566
+   )
+  ] .
+
+ns2:notIn
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "NOT IN" ;
+  rdfs:comment "Checks whether the value on the left (?arg1) is none of the values on the right (?arg2, ?arg3 ...)." ;
+  ns0:symbol "NOT IN" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The value to find." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:Test-instanceOf-rdfsLiteral-false
+  a ns1:TestCase ;
+  ns1:testResult false ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 rdfs:Literal ;
+    ns2:arg1 owl:Thing
+  ] .
+
+ns2:month
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "month" ;
+  rdfs:comment "Extracts the month from a date/time literal." ;
+  ns0:symbol "month" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The date or dateTime argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:UntypedObjectPropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Untyped object property constraint" ;
+  rdfs:comment "A generic SPIN template that can be used to declare a constraint that all values of a given property must have an rdf:type." ;
+  ns0:labelTemplate "Values of {?property} must have a type" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid579
+     _:genid583
+     _:genid590
+   ) ;
+    ns2:templates (
+     _:genid596
+     _:genid599
+     _:genid601
+     _:genid604
+   )
+  ] .
+
+ns2:isURI
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "isURI" ;
+  rdfs:comment "Checks whether a node is a URI." ;
+  ns0:symbol "isURI" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the node to check" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:subClassOf
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "sub class of" ;
+  rdfs:comment "Checks whether a given class (?arg1) is a (transitive) sub-class of another class (?arg2)." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The potential super-class." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The potential sub-class." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where ( _:genid611 )
+  ] .
+
+ns2:strbefore
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-strbefore> ;
+  rdfs:label "strbefore" ;
+  rdfs:comment "Returns a literal of the same kind (simple literal, plain literal same language tag, xsd:string) as the first argument arg1. The lexical form of the result is the substring of the value of arg1 that precedes in arg1 the first occurrence of the lexical form of arg2; otherwise the lexical form of the result is the empty string. If the lexical form of arg2 is the empty string, the lexical form of the result is the emprty string." ;
+  ns0:symbol "STRBEFORE" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The pattern to find within the input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:subjectInGraph
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "subject in graph" ;
+  rdfs:comment "Gets the \"first\" subject of a given predicate (?arg1)/object (?arg2) combination in a given graph (?arg3). Note that if multiple values are present then the result might be unpredictably random." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The graph to operate on." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg3
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The object." ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The predicate." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid620 ) ;
+    ns2:resultVariables ( _:genid625 )
+  ] .
+
+ns1:InferDefaultValue
+  a ns0:ConstructTemplate ;
+  rdfs:subClassOf ns0:ConstructTemplates ;
+  rdfs:label "Infer default value" ;
+  rdfs:comment "Can be used to infer default values for a given subject/predicate combination. This is typically assigned as spin:rule to a class. If ?this does not already have a value for a given property {?predicate}, then this will infer the value {?defaultValue}." ;
+  ns0:labelTemplate "Default value for {?predicate}: {?defaultValue}" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The predicate to infer the default value of." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns1:predicate
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The default value to infer." ;
+    ns1:predicate ns1:defaultValue
+  ] ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid630
+     _:genid636
+   ) ;
+    ns2:templates ( _:genid641 )
+  ] .
+
+ns2:sha512
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-sha512> ;
+  rdfs:label "sha512" ;
+  rdfs:comment "Returns the SHA512 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case." ;
+  ns0:symbol "SHA512" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input literal." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:unaryPlus
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "unary plus" ;
+  rdfs:comment "Returns the operand ?arg1 with the sign unchanged. Semantically, this operation performs no operation." ;
+  ns0:symbol "+" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:day
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "day" ;
+  rdfs:comment "Extracts the day from a date/time literal." ;
+  ns0:symbol "day" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The date or dateTime argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:now
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:label "now" ;
+  rdfs:comment "Gets the current date and time as an xsd:dateTime literal." ;
+  ns0:symbol "now" ;
+  ns0:returnType xsd:dateTime .
+
+ns1:LessThanOtherPropertyPairConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyPairConstraintTemplates ;
+  rdfs:label "Less than other property pair constraint" ;
+  rdfs:comment "Can be used to define a constraint between two properties (?property and ?otherProperty) enforcing the invariant that the values of ?property must be smaller than the values of ?otherProperty. For example this can be used to state that ex:startDate must be < ex:endDate." ;
+  ns0:labelTemplate "Values of {?property} must be less than the values of {?otherProperty}" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid649
+     _:genid653
+     _:genid657
+     _:genid662
+   ) ;
+    ns2:templates (
+     _:genid674
+     _:genid677
+     _:genid680
+     _:genid683
+     _:genid685
+   )
+  ] .
+
+ns2:UUID
+  a ns0:Function ;
+  rdfs:subClassOf ns1:URIFunctions ;
+  rdfs:label "UUID" ;
+  rdfs:comment "Returns a fresh IRI from the UUID URN scheme. Each call of UUID() returns a different UUID. It must not be the \"nil\" UUID (all zeroes). The variant and version of the UUID is implementation dependent." ;
+  ns0:symbol "UUID" ;
+  ns0:returnType rdfs:Resource .
+
+ns1:URIFunctions
+  a ns0:Function ;
+  rdfs:subClassOf ns0:Functions ;
+  rdfs:label "URI functions" ;
+  rdfs:comment "A collection of functions that create URI resources." ;
+  ns0:abstract true .
+
+ns1:Test-object-labelOfArgument
+  a ns1:TestCase ;
+  ns1:testResult "Argument" ;
+  ns1:testExpression [
+    a ns2:Select ;
+    ns2:where ( _:genid689 ) ;
+    ns2:resultVariables ( _:genid695 )
+  ] .
+
+ns2:isNumeric
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-isNumeric> ;
+  rdfs:label "is numeric" ;
+  rdfs:comment "Returns true if arg1 is a numeric value. Returns false otherwise. term is numeric if it has an appropriate datatype (see the section Operand Data Types) and has a valid lexical form, making it a valid argument to functions and operators taking numeric arguments." ;
+  ns0:symbol "isNumeric" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment """The node to check whether it's numeric.
+""" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:strstarts
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-starts> ;
+  rdfs:label "strstarts" ;
+  rdfs:comment "Returns true if the lexical form of ?arg1 begins with the lexical form of ?arg2, otherwise it returns false." ;
+  ns0:symbol "STRSTARTS" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The sub-string that the input string is supposed to begin with." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:max
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "max" ;
+  rdfs:comment "Takes two arguments and returns the larger one of them." ;
+  ns0:returnType rdfs:Literal ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The second argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The first argument." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid703 ) ;
+    ns2:resultVariables ( _:genid708 )
+  ] .
+
+ns1:Test-object-noValue
+  a ns1:TestCase ;
+  ns1:testExpression [
+    a ns1:object ;
+    ns2:arg2 owl:versionInfo ;
+    ns2:arg1 owl:versionInfo
+  ] .
+
+ns1:objectSubProp
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "object sub prop" ;
+  rdfs:comment "Gets the object of a given subject (?arg1) / predicate (?arg2) combination, also taking the sub-properties of ?arg2 into account. Note that if multiple values are present then the result might be unpredictably random." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The predicate to get the object of (including sub-properties of it)." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The subject to get the object from." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid714
+     _:genid718
+   ) ;
+    ns2:resultVariables ( _:genid722 )
+  ] .
+
+ns1:Test-instanceOf-rdfsClass
+  a ns1:TestCase ;
+  ns1:testResult true ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 rdfs:Class ;
+    ns2:arg1 owl:Thing
+  ] .
+
+ns2:lcase
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-lcase> ;
+  rdfs:label "LCASE" ;
+  rdfs:comment "Converts a string to lower case characters." ;
+  ns0:symbol "LCASE" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:hasValue
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "hasValue" ;
+  rdfs:comment "Checks whether a given resource (?arg1) has a given value (?arg3) for a given property (?arg2) or one of the sub-properties of it." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the expected value" ;
+    ns1:predicate ns2:arg3
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the property that is expected to hold the value" ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the subject that is expected to have the value" ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where (
+     _:genid730
+     _:genid734
+   )
+  ] .
+
+ns2:timezone
+  a ns0:Function ;
+  rdfs:subClassOf ns1:DateFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-timezone> ;
+  rdfs:label "timezone" ;
+  rdfs:comment "Returns the timezone part of ?arg1 as an xsd:dayTimeDuration. Raises an error if there is no timezone." ;
+  ns0:symbol "TIMEZONE" ;
+  ns0:returnType xsd:duration ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input time." ;
+    ns1:valueType xsd:dateTime ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:relevantPropertyAtClass
+  a ns0:MagicProperty ;
+  rdfs:subClassOf ns0:MagicProperties ;
+  rdfs:label "relevant property at class" ;
+  rdfs:comment """A magic property that establishes a relationship between properties (left) and classes (right) to determine which properties are "relevant" for the class. Relevant means that they have the class in their domain and/or restrictions, including superclasses and sub-properties (unless they define their own domain). Domains consisting of an owl:unionOf are also handled.
+
+Note that the performance of the body of this magic property has been optimized for the case in which the class is given, so ideally use this for queries such as  ?property spl:relevantPropertyAtClass skos:Concept .""" ;
+  ns0:returnType rdfs:Class ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The property." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid740
+     _:genid745
+     _:genid772
+     _:genid776
+     _:genid785
+   ) ;
+    ns2:resultVariables ( _:genid789 ) ;
+    ns2:distinct true
+  ] .
+
+ns1:objectInGraph
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "object in graph" ;
+  rdfs:comment "Gets the object of a given subject (?arg1) / predicate (?arg2) combination in a given graph ?arg3. Note that if multiple values are present then the result might be unpredictably random." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The graph to query in." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg3
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The predicate to get the object of." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The subject to get the object from." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid795 ) ;
+    ns2:resultVariables ( _:genid800 )
+  ] .
+
+ns1:ExistencePropertyPairConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyPairConstraintTemplates ;
+  rdfs:label "Existence property pair constraint" ;
+  ns0:labelTemplate "The property {?property} must have a value whenever {?otherProperty} has a value" ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid803
+     _:genid810
+     _:genid817
+   ) ;
+    ns2:templates (
+     _:genid825
+     _:genid828
+     _:genid830
+     _:genid833
+   )
+  ] .
+
+ns1:SPINOverview
+  a ns0:SelectTemplate ;
+  rdfs:subClassOf ns0:SelectTemplates ;
+  rdfs:label "SPIN Overview" ;
+  rdfs:comment "Finds all constraints and rules attached to classes in the current graph, using spin:constraint, spin:constructor, spin:rule or their sub-properties. The result set will contain the associated class, the predicate, and the SPIN rule." ;
+  ns0:labelTemplate "SPIN Overview" ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid837
+     _:genid852
+     _:genid857
+     _:genid862
+     _:genid866
+     _:genid872
+   ) ;
+    ns2:resultVariables (
+     _:genid927
+     _:genid929
+     _:genid931
+   )
+  ] .
+
+ns1:Attribute
+  a ns0:ConstructTemplate ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the minimum number of values permitted for the property" ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate ns1:minCount ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the RDF property holding the attribute value" ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns1:predicate
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the default value of the attribute" ;
+    ns1:predicate ns1:defaultValue ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the maximum number of values permitted for the property" ;
+    ns1:valueType xsd:integer ;
+    ns1:predicate ns1:maxCount ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the type that all values of the property must have" ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns1:valueType ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "a comment describing the meaning of this attribute" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate rdfs:comment ;
+    ns1:optional true
+  ] ;
+  rdfs:comment """Defines an "attribute" of a class. Attribute definitions bundle common modeling patterns known from object-oriented languages like UML. Each attribute can have min and max cardinality, a value type and a default value. The attribute links a class with one RDF property. This template should be used as spin:constraints on a class to make sure that classes meet the expected cardinalities and valueType constraints.
+If a model wants to use spl:defaultValue, then it should instantiate the spl:ConstructDefaultValues as a spin:constructor at some root class, such as rdfs:Resource.""" ;
+  rdfs:label "Attribute" ;
+  ns0:labelTemplate "Attribute {?predicate} : {?valueType} [{?minCount},{?maxCount}]" ;
+  rdfs:subClassOf ns0:ConstructTemplates ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where ( _:genid884 ) ;
+    ns2:templates (
+     _:genid918
+     _:genid921
+     _:genid923
+   )
+  ] .
+
+ns2:sha256
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-sha256> ;
+  rdfs:label "sha256" ;
+  rdfs:comment "Returns the SHA256 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case." ;
+  ns0:symbol "SHA256" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input literal." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:subject
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "subject" ;
+  rdfs:comment "Gets the \"first\" subject of a given predicate (?arg1)/object (?arg2) combination. Note that if multiple values are present then the result might be unpredictably random." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The object." ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The predicate." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid937 ) ;
+    ns2:resultVariables ( _:genid940 )
+  ] .
+
+ns2:unaryMinus
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:label "unary minus" ;
+  rdfs:comment "Returns the operand ?arg1 with the sign reversed. If ?arg1 is positive, its negative is returned; if it is negative, its positive is returned." ;
+  ns0:symbol "-" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:abs
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MathematicalFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-abs> ;
+  rdfs:label "abs" ;
+  rdfs:comment "Returns the absolute value of arg. An error is raised if arg is not a numeric value." ;
+  ns0:symbol "abs" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input value." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:Test-instanceOf-rdfsClass-false
+  a ns1:TestCase ;
+  ns1:testResult false ;
+  ns1:testExpression [
+    a ns1:instanceOf ;
+    ns2:arg2 rdfs:Class ;
+    ns2:arg1 owl:versionInfo
+  ] .
+
+ns2:in
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "IN" ;
+  rdfs:comment "Checks whether the value on the left (?arg1) is one of the values on the right (?arg2, ?arg3 ...)." ;
+  ns0:symbol "IN" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The value to find." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:AllArguments
+  a ns0:SelectTemplate ;
+  rdfs:subClassOf ns0:SelectTemplates ;
+  rdfs:label "All arguments" ;
+  rdfs:comment "Gets a list of all spl:Arguments declared at a given class and its superclasses." ;
+  ns0:labelTemplate "All spl:Arguments of {?class}" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The class to get the arguments of." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns1:class
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid948
+     _:genid953
+     _:genid957
+   ) ;
+    ns2:resultVariables (
+     _:genid960
+     _:genid962
+   )
+  ] .
+
+ns2:replace
+  a ns0:Function ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment """The pattern to replace.
+""" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The replacement string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg3
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "Additional flags for the replacement." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg4 ;
+    ns1:optional true
+  ] ;
+  rdfs:comment "Replaces each non-overlapping occurrence of a regular expression pattern with a replacement string. Regular expession matching may involve modifier flags." ;
+  ns0:returnType xsd:string ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-replace> ;
+  rdfs:label "replace" ;
+  ns0:symbol "REPLACE" .
+
+ns2:lang
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:label "lang" ;
+  rdfs:comment "Returns the language tag of ?arg1, if it has one. It returns \"\" if the literal has no language tag. Node that the RDF data model does not include literals with an empty language tag." ;
+  ns0:symbol "lang" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the literal to get the language of" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:langMatches
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:label "langMatches" ;
+  rdfs:comment "Returns true if language-tag (first argument) matches language-range (second argument) per the basic filtering scheme defined in [RFC4647] section 3.3.1." ;
+  ns0:symbol "langMatches" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the language tag that ?arg1 must have" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the literal that is expected to have ?arg2 as language tag" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:sha384
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-sha384> ;
+  rdfs:label "sha384" ;
+  rdfs:comment "Returns the SHA384 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case." ;
+  ns0:symbol "SHA384" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input literal." ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:hasPrimaryKey
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "has primary key" ;
+  rdfs:comment "Checks if a given class has a declared primary key, using spl:PrimaryKeyPropertyConstraint." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The class to get the primary key of." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate <http://spinrdf.org/arg#class>
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where (
+     _:genid974
+     _:genid979
+   )
+  ] .
+
+ns2:strafter
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-strafter> ;
+  rdfs:label "strafter" ;
+  rdfs:comment "Returns a literal of the same kind (simple literal, plain literal same language tag, xsd:string) as the first argument arg1. The lexical form of the result is the substring of the value of arg1 that proceeds in arg1 the first occurrence of the lexical form of arg2; otherwise the lexical form of the result is the empty string. If the lexical form of arg2 is the empty string, the lexical form of the result is the emprty string." ;
+  ns0:symbol "STRAFTER" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The pattern to find within the input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:isPrimaryKeyPropertyOfInstance
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "is primary key property of instance" ;
+  rdfs:comment "Checks if a given property is the primary key of a given instance." ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The property that may or may not be the primary key." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate <http://spinrdf.org/arg#property>
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The instance to check." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate <http://spinrdf.org/arg#instance>
+  ] ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where (
+     _:genid988
+     _:genid992
+     _:genid997
+   )
+  ] .
+
+ns1:RangePropertyConstraint
+  a ns1:ConstraintTemplate ;
+  rdfs:subClassOf ns1:PropertyConstraintTemplates ;
+  rdfs:label "Range property constraint" ;
+  rdfs:comment "Represents a constraint that narrows down a property by a minimum and maximum value compared by <= and >=." ;
+  ns0:labelTemplate "Values of {?property} must be within the interval [ {?min} , {?max} ]" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The minimum value." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate <http://spinrdf.org/arg#min> ;
+    ns1:optional true
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The maximum value." ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate <http://spinrdf.org/arg#max> ;
+    ns1:optional true
+  ] ;
+  ns0:body [
+    a ns2:Construct ;
+    ns2:where (
+     _:genid1005
+     _:genid1009
+     _:genid1024
+   ) ;
+    ns2:templates (
+     _:genid1034
+     _:genid1037
+     _:genid1039
+     _:genid1042
+     _:genid1045
+   )
+  ] .
+
+ns2:encode_for_uri
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:label "encode_for_uri" ;
+  ns0:symbol "ENCODE_FOR_URI" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The string to convert." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:exists
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "EXISTS" ;
+  rdfs:comment "The filter function EXISTS. The graph pattern is stored in sp:elements." ;
+  ns0:symbol "EXISTS" ;
+  ns0:returnType xsd:boolean .
+
+ns2:isIRI
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "isIRI" ;
+  rdfs:comment "Checks whether a given node is a IRI node." ;
+  ns0:symbol "isIRI" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the node being tested" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:bound
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "bound" ;
+  rdfs:comment "Returns true if ?arg1 is bound to a value. Returns false otherwise. Variables with the value NaN or INF are considered bound." ;
+  ns0:symbol "bound" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the variable or expression that is checked" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:instanceOf
+  a ns0:Function ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the instance being tested" ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the type that the instance must have" ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate ns2:arg2
+  ] ;
+  owl:versionInfo "Note that in TopBraid this function has been implemented in native Java code, for performance reasons." ;
+  rdfs:comment "Checks whether a given resource (?arg1) has a given type (?arg2). In order to fulfill this condition, there must either be a triple ?arg1 rdf:type ?arg2, or ?instance rdf:type ?subClass where ?subClass is a subclass of ?arg2. If the first argument is a literal, then the second argument must be the matching XSD datatype." ;
+  ns0:returnType xsd:boolean ;
+  ns0:body [
+    a ns2:Ask ;
+    ns2:where ( _:genid1106 )
+  ] ;
+  ns0:labelTemplate "{?arg1} instance of {?arg2}" ;
+  rdfs:label "instanceOf" ;
+  rdfs:subClassOf ns1:BooleanFunctions .
+
+ns2:strlen
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-strlen> ;
+  rdfs:label "strlen" ;
+  rdfs:comment "Computes the length of a given input string." ;
+  ns0:symbol "STRLEN" ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The input string." ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:isLiteral
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "isLiteral" ;
+  rdfs:comment "Checks whether a given node is a literal." ;
+  ns0:symbol "isLiteral" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the node being tested" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:and
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "and" ;
+  rdfs:comment "Return the logical AND between two (boolean) operands." ;
+  ns0:symbol "&&" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand of the intersection" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand of the intersection" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:object
+  a ns0:Function ;
+  owl:versionInfo "Note that in TopBraid this function has been implemented in native Java code, for performance reasons." ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "object" ;
+  rdfs:comment """Gets the object of a given subject (?arg1) / predicate (?arg2) combination.
+
+Note that if multiple values are present then the result might be unpredictably random. Furthermore, if one of the arguments is unbound, it will return the first match of the resulting SPO pattern. These scenarios are strongly discouraged but remain left supported for backward compatibility reasons.""" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The predicate to get the object of." ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The subject to get the object from." ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid1114 ) ;
+    ns2:resultVariables ( _:genid1088 )
+  ] .
+
+ns1:primaryKeyProperty
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "primary key property" ;
+  rdfs:comment "Gets the primary key property declared for a given class, using spl:PrimaryKeyPropertyConstraint." ;
+  ns0:returnType rdf:Property ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The class to get the primary key of." ;
+    ns1:valueType rdfs:Class ;
+    ns1:predicate <http://spinrdf.org/arg#class>
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where (
+     _:genid1143
+     _:genid1098
+     _:genid1094
+     _:genid1091
+   ) ;
+    ns2:resultVariables ( _:genid1129 )
+  ] .
+
+ns2:concat
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:label "concat" ;
+  rdfs:comment "The CONCAT built-in function. Creates a single string by concatenating all arguments from left to right. Note that if any one of the arguments is unbound (null) then the whole result string will be unbound." ;
+  ns0:symbol "CONCAT" ;
+  ns0:returnType xsd:string .
+
+ns2:lt
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "lt" ;
+  rdfs:comment "Returns true if ?arg1 < ?arg2." ;
+  ns0:symbol "<" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:datatype
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "datatype" ;
+  rdfs:comment "Returns the datatype IRI of argument ?arg1; returns xsd:string if the parameter is a simple literal." ;
+  ns0:symbol "datatype" ;
+  ns0:returnType rdfs:Class ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the literal to get the datatype of" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:regex
+  a ns0:Function ;
+  rdfs:comment "Returns true if a string (?arg1) matches the regular expression supplied as a pattern (?arg2) as influenced by the value of flags (?arg3), otherwise returns false." ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the match pattern" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the input string" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg1
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the flags" ;
+    ns1:valueType xsd:string ;
+    ns1:predicate ns2:arg3 ;
+    ns1:optional true
+  ] ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-regex> ;
+  ns0:returnType xsd:boolean ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  ns0:symbol "regex" ;
+  rdfs:label "regex" .
+
+ns2:sameTerm
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:seeAlso <http://www.w3.org/TR/sparql11-query/#func-sameTerm> ;
+  rdfs:label "same term" ;
+  rdfs:comment "Returns TRUE if ?arg1 and ?arg2 are the same RDF term as defined in Resource Description Framework (RDF): Concepts and Abstract Syntax; returns FALSE otherwise." ;
+  ns0:symbol "sameTerm" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second argument" ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first argument" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns1:objectCount
+  a ns0:Function ;
+  rdfs:subClassOf ns1:OntologyFunctions ;
+  rdfs:label "objectCount" ;
+  rdfs:comment "Gets the number of values of a given property (?arg2) at a given subject (?arg1). The result is the number of matches of (?arg1, ?arg2, ?object)." ;
+  ns0:returnType xsd:integer ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the property to get the number of values of" ;
+    ns1:valueType rdf:Property ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the subject to get the number of objects of" ;
+    ns1:valueType rdfs:Resource ;
+    ns1:predicate ns2:arg1
+  ] ;
+  ns0:body [
+    a ns2:Select ;
+    ns2:where ( _:genid1152 ) ;
+    ns2:resultVariables ( _:genid1119 )
+  ] .
+
+ns2:coalesce
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:label "COALESCE" ;
+  rdfs:comment "Takes any number of arguments, and returns the first bound argument, starting at the left." ;
+  ns0:symbol "COALESCE" .
+
+ns2:eq
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "eq" ;
+  rdfs:comment "Returns true if both arguments are equal." ;
+  ns0:symbol "=" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second value to compare" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first value to compare" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:not
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "not" ;
+  rdfs:comment "Returns the boolean negation of the argument." ;
+  ns0:symbol "!" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the operand to negate" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:gt
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "gt" ;
+  rdfs:comment "Returns true if ?arg1 > arg2." ;
+  ns0:symbol ">" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:str
+  a ns0:Function ;
+  rdfs:subClassOf ns1:StringFunctions ;
+  rdfs:label "str" ;
+  rdfs:comment "Returns the lexical form of ?arg1 (a literal); returns the codepoint representation of ?arg1 (an IRI). This is useful for examining parts of an IRI, for instance, the host-name." ;
+  ns0:symbol "str" ;
+  ns0:returnType xsd:string ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the node to convert to string" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:isBlank
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "isBlank" ;
+  rdfs:comment "Checks whether a given node is a blank node." ;
+  ns0:symbol "isBlank" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the node being checked" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:ne
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "ne" ;
+  rdfs:comment "Returns true if ?arg1 != ?arg2." ;
+  ns0:symbol "!=" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns0:eval ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The expression to evaluate. Should be a sp:Select, sp:Ask, a sp:Variable or an instance of a SPARQL function class, but may also be a simple RDF value." ;
+    ns1:predicate ns2:arg1
+  ] .
+ns2:if
+  a ns0:Function ;
+  rdfs:subClassOf ns1:MiscFunctions ;
+  rdfs:label "IF" ;
+  rdfs:comment "The SPARQL 1.1 built-in function IF." ;
+  ns0:symbol "IF" ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "The function result if ?arg1 is false." ;
+    ns1:predicate ns2:arg3
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "The function result if ?arg1 is true." ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "A condition to evaluate - if true then the ?arg2 will be returned, otherwise ?arg3." ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:or
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "or" ;
+  rdfs:comment "Returns the logical OR between two (boolean) operands." ;
+  ns0:symbol "||" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType xsd:boolean ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:ge
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "ge" ;
+  rdfs:comment "Returns true if ?arg1 >= ?arg2." ;
+  ns0:symbol ">=" ;
+  ns0:returnType xsd:boolean ;
+  ns0:constraint [
+    a ns1:Argument ;
+    rdfs:comment "the second operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg2
+  ], [
+    a ns1:Argument ;
+    rdfs:comment "the first operand" ;
+    ns1:valueType rdfs:Literal ;
+    ns1:predicate ns2:arg1
+  ] .
+
+ns2:notExists
+  a ns0:Function ;
+  rdfs:subClassOf ns1:BooleanFunctions ;
+  rdfs:label "NOT EXISTS" ;
+  rdfs:comment "The filter function NOT EXISTS. The graph pattern is stored in sp:elements." ;
+  ns0:symbol "NOT EXISTS" ;
+  ns0:returnType xsd:boolean .
+
+_:genid11
+  ns2:subject [ ns2:varName "testCase" ] ;
+  ns2:predicate ns1:testExpression ;
+  ns2:object [ ns2:varName "expr" ] .
+
+_:genid15
+  a ns2:Optional ;
+  ns2:elements ( _:genid17 ) .
+
+_:genid17
+  ns2:subject [ ns2:varName "testCase" ] ;
+  ns2:predicate ns1:testResult ;
+  ns2:object [ ns2:varName "expected" ] .
+
+_:genid21
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "actual" ] ;
+  ns2:expression [
+    a ns0:eval ;
+    ns2:arg1 [ ns2:varName "expr" ]
+  ] .
+
+_:genid26
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:ne ;
+        ns2:arg2 [ ns2:varName "expected" ] ;
+        ns2:arg1 [ ns2:varName "actual" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "expected" ]
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:ne ;
+      ns2:arg2 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "actual" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "expected" ]
+      ]
+    ]
+  ] .
+
+_:genid40 ns2:varName "testCase" .
+_:genid42 ns2:varName "expected" .
+_:genid44 ns2:varName "actual" .
+_:genid52
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements ( _:genid55 )
+  ] .
+
+_:genid55
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "otherProperty" ] ;
+  ns2:object [ ns2:varName "someValue" ] .
+
+_:genid59
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:exists ;
+    ns2:elements ( _:genid62 )
+  ] .
+
+_:genid62
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid66
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg5 " has none" ;
+    ns2:arg4 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "otherProperty" ]
+    ] ;
+    ns2:arg3 " must have no values because " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "property" ]
+    ] ;
+    ns2:arg1 "Property "
+  ] .
+
+_:genid74
+  ns2:subject _:genid76 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid77
+  ns2:subject _:genid76 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid79
+  ns2:subject _:genid76 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid82
+  ns2:subject _:genid76 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid90
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "p" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subPropertyOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object ns0:_arg2 .
+
+_:genid94
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate [ ns2:varName "p" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid98
+  a ns2:Filter ;
+  ns2:expression [
+    a ns1:instanceOf ;
+    ns2:arg2 ns0:_arg3 ;
+    ns2:arg1 [ ns2:varName "value" ]
+  ] .
+
+_:genid104
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:and ;
+    ns2:arg2 [
+      a ns2:not ;
+      ns2:arg1 [
+        a ns2:sameTerm ;
+        ns2:arg2 [
+          a xsd:string ;
+          ns2:arg1 ns0:_arg1
+        ] ;
+        ns2:arg1 ns0:_arg1
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:isLiteral ;
+      ns2:arg1 ns0:_arg1
+    ]
+  ] .
+
+_:genid114
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid118
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "length" ] ;
+  ns2:expression [
+    a ns2:strlen ;
+    ns2:arg1 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ]
+  ] .
+
+_:genid124
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:gt ;
+        ns2:arg2 [ ns2:varName "maxLength" ] ;
+        ns2:arg1 [ ns2:varName "length" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "maxLength" ]
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:lt ;
+      ns2:arg2 [
+        a ns2:coalesce ;
+        ns2:arg2 0 ;
+        ns2:arg1 [ ns2:varName "minLength" ]
+      ] ;
+      ns2:arg1 [ ns2:varName "length" ]
+    ]
+  ] .
+
+_:genid137
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg7 " characters" ;
+    ns2:arg6 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "maxLength" ]
+    ] ;
+    ns2:arg5 " and " ;
+    ns2:arg4 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "minLength" ]
+    ] ;
+    ns2:arg3 " must have between " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ] ;
+    ns2:arg1 "Value "
+  ] .
+
+_:genid147
+  ns2:subject _:genid149 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid150
+  ns2:subject _:genid149 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid152
+  ns2:subject _:genid149 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid155
+  ns2:subject _:genid149 ;
+  ns2:predicate ns0:violationValue ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid158
+  ns2:subject _:genid149 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid169
+  a ns2:TriplePath ;
+  ns2:subject ns0:_arg1 ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subPropertyOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object ns0:_arg2 .
+
+_:genid173
+  ns2:subject ns0:_this ;
+  ns2:predicate rdf:type ;
+  ns2:object [ ns2:varName "directType" ] .
+
+_:genid176
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "directType" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "type" ] .
+
+_:genid181
+  ns2:subject [ ns2:varName "type" ] ;
+  ns2:predicate ns0:constraint ;
+  ns2:object [ ns2:varName "attribute" ] .
+
+_:genid185
+  ns2:subject [ ns2:varName "attribute" ] ;
+  ns2:predicate ns1:defaultValue ;
+  ns2:object [ ns2:varName "defaultValue" ] .
+
+_:genid189
+  ns2:subject [ ns2:varName "attribute" ] ;
+  ns2:predicate ns1:predicate ;
+  ns2:object [ ns2:varName "predicate" ] .
+
+_:genid193
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "predicate" ] ;
+  ns2:object [ ns2:varName "defaultValue" ] .
+
+_:genid201
+  ns2:subject [ ns2:varName "subject" ] ;
+  ns2:predicate ns0:_arg1 ;
+  ns2:object ns0:_arg2 .
+
+_:genid204
+  ns2:varName "result" ;
+  ns2:expression [
+    a ns2:Count ;
+    ns2:expression [ ns2:varName "subject" ]
+  ] .
+
+_:genid213
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid217
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:not ;
+    ns2:arg1 [
+      a ns1:instanceOf ;
+      ns2:arg2 [ ns2:varName "type" ] ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ]
+  ] .
+
+_:genid223
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg4 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "type" ]
+    ] ;
+    ns2:arg3 " must have the type " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ] ;
+    ns2:arg1 "Value "
+  ] .
+
+_:genid231
+  ns2:subject _:genid233 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid234
+  ns2:subject _:genid233 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid236
+  ns2:subject _:genid233 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid239
+  ns2:subject _:genid233 ;
+  ns2:predicate ns0:violationValue ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid242
+  ns2:subject _:genid233 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid248
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "objectCount" ] ;
+  ns2:expression [
+    a ns1:objectCount ;
+    ns2:arg2 [ ns2:varName "property" ] ;
+    ns2:arg1 ns0:_this
+  ] .
+
+_:genid253
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:gt ;
+        ns2:arg2 [ ns2:varName "maxCount" ] ;
+        ns2:arg1 [ ns2:varName "objectCount" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "maxCount" ]
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:lt ;
+        ns2:arg2 [ ns2:varName "minCount" ] ;
+        ns2:arg1 [ ns2:varName "objectCount" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "minCount" ]
+      ]
+    ]
+  ] .
+
+_:genid268
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "objectCount" ]
+    ] ;
+    ns2:arg1 "Invalid number of values: "
+  ] .
+
+_:genid274
+  ns2:subject _:genid276 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid277
+  ns2:subject _:genid276 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid279
+  ns2:subject _:genid276 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid282
+  ns2:subject _:genid276 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid286
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid290
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:exists ;
+    ns2:elements (
+     _:genid293
+     _:genid298
+   )
+  ] .
+
+_:genid293
+  ns2:subject [ ns2:varName "other" ] ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid298
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:ne ;
+    ns2:arg2 [ ns2:varName "other" ] ;
+    ns2:arg1 ns0:_this
+  ] .
+
+_:genid302
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg3 "  already exists elsewhere. " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "value" ]
+    ] ;
+    ns2:arg1 "Property must have a unique value, but "
+  ] .
+
+_:genid308
+  ns2:subject _:genid310 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid311
+  ns2:subject _:genid310 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "label" ] .
+
+_:genid314
+  ns2:subject _:genid310 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid316
+  ns2:subject _:genid310 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid319
+  ns2:subject _:genid310 ;
+  ns2:predicate ns0:violationValue ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid336
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid340
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:not ;
+    ns2:arg1 [
+      a ns2:regex ;
+      ns2:arg2 [ ns2:varName "pattern" ] ;
+      ns2:arg1 [
+        a xsd:string ;
+        ns2:arg1 [ ns2:varName "object" ]
+      ]
+    ]
+  ] .
+
+_:genid347
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg5 "\"" ;
+    ns2:arg4 [ ns2:varName "pattern" ] ;
+    ns2:arg3 " must match the regular expression \"" ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ] ;
+    ns2:arg1 "Value "
+  ] .
+
+_:genid354
+  ns2:subject _:genid356 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid357
+  ns2:subject _:genid356 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid359
+  ns2:subject _:genid356 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid362
+  ns2:subject _:genid356 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid368
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "result" ] ;
+  ns2:expression [
+    a ns2:if ;
+    ns2:arg3 ns0:_arg2 ;
+    ns2:arg2 ns0:_arg1 ;
+    ns2:arg1 [
+      a ns2:lt ;
+      ns2:arg2 ns0:_arg2 ;
+      ns2:arg1 ns0:_arg1
+    ]
+  ] .
+
+_:genid373 ns2:varName "result" .
+_:genid379
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "class" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "superClass" ] .
+
+_:genid384
+  ns2:subject [ ns2:varName "superClass" ] ;
+  ns2:predicate ns0:constraint ;
+  ns2:object [ ns2:varName "con" ] .
+
+_:genid388
+  ns2:subject [ ns2:varName "con" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object ns1:Argument .
+
+_:genid394
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:isIRI ;
+      ns2:arg1 ns0:_this
+    ]
+  ] .
+
+_:genid398
+  a ns2:Union ;
+  ns2:elements (
+   _:genid400
+   _:genid434
+ ) .
+
+_:genid400
+  rdf:rest ( _:genid402 ) ;
+  rdf:first (
+   _:genid408
+   _:genid417
+   _:genid424
+ ) .
+
+_:genid402
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg2 [
+      a <http://jena.hpl.hp.com/ARQ/function#localname> ;
+      ns2:arg1 [ ns2:varName "predicate" ]
+    ] ;
+    ns2:arg1 "Missing value for argument "
+  ] .
+
+_:genid408
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:or ;
+      ns2:arg2 [
+        a ns2:eq ;
+        ns2:arg2 false ;
+        ns2:arg1 [ ns2:varName "optional" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:not ;
+        ns2:arg1 [
+          a ns2:bound ;
+          ns2:arg1 [ ns2:varName "optional" ]
+        ]
+      ]
+    ]
+  ] .
+
+_:genid417
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements ( _:genid420 )
+  ] .
+
+_:genid420
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "predicate" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid424
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements (
+     _:genid427
+     _:genid430
+   )
+  ] .
+
+_:genid427
+  ns2:subject ns0:_this ;
+  ns2:predicate rdf:type ;
+  ns2:object [ ns2:varName "template" ] .
+
+_:genid430
+  a ns2:Filter ;
+  ns2:expression [
+    a ns1:instanceOf ;
+    ns2:arg2 ns1:UnionTemplate ;
+    ns2:arg1 [ ns2:varName "template" ]
+  ] .
+
+_:genid434
+  rdf:rest ( _:genid436 ) ;
+  rdf:first (
+   _:genid444
+   _:genid449
+   _:genid453
+ ) .
+
+_:genid436
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg5 ")" ;
+    ns2:arg4 [
+      a <http://jena.hpl.hp.com/ARQ/function#localname> ;
+      ns2:arg1 [ ns2:varName "valueType" ]
+    ] ;
+    ns2:arg3 " (expected: " ;
+    ns2:arg2 [
+      a <http://jena.hpl.hp.com/ARQ/function#localname> ;
+      ns2:arg1 [ ns2:varName "predicate" ]
+    ] ;
+    ns2:arg1 "Incorrect type of argument "
+  ] .
+
+_:genid444
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:bound ;
+      ns2:arg1 [ ns2:varName "valueType" ]
+    ]
+  ] .
+
+_:genid449
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "predicate" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid453
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:and ;
+    ns2:arg2 [
+      a ns2:or ;
+      ns2:arg2 [
+        a ns2:isLiteral ;
+        ns2:arg1 [ ns2:varName "value" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:ne ;
+        ns2:arg2 rdfs:Resource ;
+        ns2:arg1 [ ns2:varName "valueType" ]
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:not ;
+      ns2:arg1 [
+        a ns1:instanceOf ;
+        ns2:arg2 [ ns2:varName "valueType" ] ;
+        ns2:arg1 [ ns2:varName "value" ]
+      ]
+    ]
+  ] .
+
+_:genid465
+  ns2:subject _:genid467 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid468
+  ns2:subject _:genid467 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid470
+  ns2:subject _:genid467 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "predicate" ] .
+
+_:genid473
+  ns2:subject _:genid467 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "label" ] .
+
+_:genid489
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "class" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "type" ] .
+
+_:genid494
+  ns2:subject [ ns2:varName "type" ] ;
+  ns2:predicate ns0:constraint ;
+  ns2:object [ ns2:varName "constraint" ] .
+
+_:genid498
+  ns2:subject [ ns2:varName "constraint" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object ns1:PrimaryKeyPropertyConstraint .
+
+_:genid503
+  ns2:subject ns0:_this ;
+  ns2:predicate <http://spinrdf.org/arg#property> ;
+  ns2:object rdfs:label .
+
+_:genid506
+  a ns2:Union ;
+  ns2:elements (
+   _:genid508
+   _:genid519
+   _:genid528
+ ) .
+
+_:genid508
+  rdf:rest ( _:genid510 ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:notExists ;
+      ns2:elements ( _:genid515 )
+    ]
+  ] .
+
+_:genid510
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression "Missing value for primary key property" .
+
+_:genid515
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "any" ] .
+
+_:genid519
+  rdf:rest ( _:genid521 ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:gt ;
+      ns2:arg2 1 ;
+      ns2:arg1 [
+        a ns1:objectCount ;
+        ns2:arg2 [ ns2:varName "property" ] ;
+        ns2:arg1 ns0:_this
+      ]
+    ]
+  ] .
+
+_:genid521
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression "Multiple values of primary key property" .
+
+_:genid528
+  rdf:rest (
+   _:genid530
+   _:genid534
+   _:genid542
+   _:genid547
+ ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:eq ;
+      ns2:arg2 1 ;
+      ns2:arg1 [
+        a ns1:objectCount ;
+        ns2:arg2 [ ns2:varName "property" ] ;
+        ns2:arg1 ns0:_this
+      ]
+    ]
+  ] .
+
+_:genid530
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid534
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "uri" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg2 [
+      a ns2:encode_for_uri ;
+      ns2:arg1 [
+        a xsd:string ;
+        ns2:arg1 [ ns2:varName "value" ]
+      ]
+    ] ;
+    ns2:arg1 [ ns2:varName "uriStart" ]
+  ] .
+
+_:genid542
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:ne ;
+    ns2:arg2 [ ns2:varName "uri" ] ;
+    ns2:arg1 [
+      a xsd:string ;
+      ns2:arg1 ns0:_this
+    ]
+  ] .
+
+_:genid547
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg4 [ ns2:varName "uri" ] ;
+    ns2:arg3 " does not align with the expected URI " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "value" ]
+    ] ;
+    ns2:arg1 "Primary key value "
+  ] .
+
+_:genid558
+  ns2:subject _:genid560 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid561
+  ns2:subject _:genid560 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "label" ] .
+
+_:genid564
+  ns2:subject _:genid560 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid566
+  ns2:subject _:genid560 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid569
+  ns2:subject [ ns2:varName "constraint" ] ;
+  ns2:predicate <http://spinrdf.org/arg#uriStart> ;
+  ns2:object [ ns2:varName "result" ] .
+
+_:genid573 ns2:varName "result" .
+_:genid579
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid583
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements ( _:genid586 )
+  ] .
+
+_:genid586
+  ns2:subject [ ns2:varName "object" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object [ ns2:varName "anyType" ] .
+
+_:genid590
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg3 " must have a type" ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ] ;
+    ns2:arg1 "Value "
+  ] .
+
+_:genid596
+  ns2:subject _:genid598 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid599
+  ns2:subject _:genid598 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid601
+  ns2:subject _:genid598 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid604
+  ns2:subject _:genid598 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid611
+  a ns2:TriplePath ;
+  ns2:subject ns0:_arg1 ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object ns0:_arg2 .
+
+_:genid620
+  a ns2:NamedGraph ;
+  ns2:graphNameNode ns0:_arg3 ;
+  ns2:elements ( _:genid622 ) .
+
+_:genid622
+  ns2:subject [ ns2:varName "subject" ] ;
+  ns2:predicate ns0:_arg1 ;
+  ns2:object ns0:_arg2 .
+
+_:genid625 ns2:varName "subject" .
+_:genid630
+  a ns2:Optional ;
+  ns2:elements ( _:genid632 ) .
+
+_:genid632
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "predicate" ] ;
+  ns2:object [ ns2:varName "anyValue" ] .
+
+_:genid636
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:not ;
+    ns2:arg1 [
+      a ns2:bound ;
+      ns2:arg1 [ ns2:varName "anyValue" ]
+    ]
+  ] .
+
+_:genid641
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "predicate" ] ;
+  ns2:object [ ns2:varName "defaultValue" ] .
+
+_:genid649
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid653
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "otherProperty" ] ;
+  ns2:object [ ns2:varName "otherValue" ] .
+
+_:genid657
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:ge ;
+    ns2:arg2 [ ns2:varName "otherValue" ] ;
+    ns2:arg1 [ ns2:varName "value" ]
+  ] .
+
+_:genid662
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "label" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg8 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "otherProperty" ]
+    ] ;
+    ns2:arg7 " of " ;
+    ns2:arg6 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "otherValue" ]
+    ] ;
+    ns2:arg5 " must be less than " ;
+    ns2:arg4 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "property" ]
+    ] ;
+    ns2:arg3 " of " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "value" ]
+    ] ;
+    ns2:arg1 "Value "
+  ] .
+
+_:genid674
+  ns2:subject _:genid676 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid677
+  ns2:subject _:genid676 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid680
+  ns2:subject _:genid676 ;
+  ns2:predicate ns0:violationValue ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid683
+  ns2:subject _:genid676 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid685
+  ns2:subject _:genid676 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "label" ] .
+
+_:genid689
+  a ns2:NamedGraph ;
+  ns2:graphNameNode <http://spinrdf.org/spl> ;
+  ns2:elements ( _:genid691 ) .
+
+_:genid691
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "value" ] ;
+  ns2:expression [
+    a ns1:object ;
+    ns2:arg2 rdfs:label ;
+    ns2:arg1 ns1:Argument
+  ] .
+
+_:genid695 ns2:varName "value" .
+_:genid703
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "result" ] ;
+  ns2:expression [
+    a ns2:if ;
+    ns2:arg3 ns0:_arg2 ;
+    ns2:arg2 ns0:_arg1 ;
+    ns2:arg1 [
+      a ns2:gt ;
+      ns2:arg2 ns0:_arg2 ;
+      ns2:arg1 ns0:_arg1
+    ]
+  ] .
+
+_:genid708 ns2:varName "result" .
+_:genid714
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "property" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subPropertyOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object ns0:_arg2 .
+
+_:genid718
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid722 ns2:varName "object" .
+_:genid730
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "p" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subPropertyOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object ns0:_arg2 .
+
+_:genid734
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate [ ns2:varName "p" ] ;
+  ns2:object ns0:_arg3 .
+
+_:genid740
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "class" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "superClass" ] .
+
+_:genid745
+  a ns2:Union ;
+  ns2:elements (
+   _:genid747
+   _:genid752
+   _:genid757
+ ) .
+
+_:genid747
+  rdf:rest ( ) ;
+  rdf:first [
+    ns2:subject [ ns2:varName "property" ] ;
+    ns2:predicate rdfs:domain ;
+    ns2:object [ ns2:varName "superClass" ]
+  ] .
+
+_:genid752
+  rdf:rest ( ) ;
+  rdf:first [
+    ns2:subject [ ns2:varName "superClass" ] ;
+    ns2:predicate owl:onProperty ;
+    ns2:object [ ns2:varName "property" ]
+  ] .
+
+_:genid757
+  rdf:rest (
+   _:genid759
+   _:genid764
+ ) ;
+  rdf:first [
+    ns2:subject [ ns2:varName "listSegment" ] ;
+    ns2:predicate rdf:first ;
+    ns2:object [ ns2:varName "superClass" ]
+  ] .
+
+_:genid759
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "list" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdf:rest ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "listSegment" ] .
+
+_:genid764
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "property" ] ;
+  ns2:path [
+    a ns2:SeqPath ;
+    ns2:path2 owl:unionOf ;
+    ns2:path1 rdfs:domain
+  ] ;
+  ns2:object [ ns2:varName "list" ] .
+
+_:genid772
+  a ns2:TriplePath ;
+  ns2:subject ns0:_arg1 ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subPropertyOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid776
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:notExists ;
+      ns2:elements ( _:genid780 )
+    ] ;
+    ns2:arg1 [
+      a ns2:eq ;
+      ns2:arg2 [ ns2:varName "property" ] ;
+      ns2:arg1 ns0:_arg1
+    ]
+  ] .
+
+_:genid780
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate rdfs:domain ;
+  ns2:object [ ns2:varName "anyDomain" ] .
+
+_:genid785
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:isIRI ;
+    ns2:arg1 [ ns2:varName "class" ]
+  ] .
+
+_:genid789 ns2:varName "class" .
+_:genid795
+  a ns2:NamedGraph ;
+  ns2:graphNameNode ns0:_arg3 ;
+  ns2:elements ( _:genid797 ) .
+
+_:genid797
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate ns0:_arg2 ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid800 ns2:varName "object" .
+_:genid803
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:exists ;
+    ns2:elements ( _:genid806 )
+  ] .
+
+_:genid806
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "otherProperty" ] ;
+  ns2:object [ ns2:varName "someValue" ] .
+
+_:genid810
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements ( _:genid813 )
+  ] .
+
+_:genid813
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid817
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg5 " has" ;
+    ns2:arg4 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "otherProperty" ]
+    ] ;
+    ns2:arg3 " must have a value because " ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "property" ]
+    ] ;
+    ns2:arg1 "Property "
+  ] .
+
+_:genid825
+  ns2:subject _:genid827 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid828
+  ns2:subject _:genid827 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid830
+  ns2:subject _:genid827 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid833
+  ns2:subject _:genid827 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid837
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Union ;
+    ns2:elements (
+     _:genid840
+     _:genid844
+     _:genid848
+   )
+  ] .
+
+_:genid840
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Bind ;
+    ns2:variable [ ns2:varName "bp" ] ;
+    ns2:expression ns0:constraint
+  ] .
+
+_:genid844
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Bind ;
+    ns2:variable [ ns2:varName "bp" ] ;
+    ns2:expression ns0:constructor
+  ] .
+
+_:genid848
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Bind ;
+    ns2:variable [ ns2:varName "bp" ] ;
+    ns2:expression ns0:rule
+  ] .
+
+_:genid852
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "property" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subPropertyOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "bp" ] .
+
+_:genid857
+  ns2:subject [ ns2:varName "class" ] ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "rule" ] .
+
+_:genid862
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:ne ;
+    ns2:arg2 ns0:Modules ;
+    ns2:arg1 [ ns2:varName "class" ]
+  ] .
+
+_:genid866
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements ( _:genid869 )
+  ] .
+
+_:genid869
+  ns2:subject [ ns2:varName "rule" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object ns1:Argument .
+
+_:genid872
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:notExists ;
+    ns2:elements ( _:genid875 )
+  ] .
+
+_:genid875
+  ns2:subject [ ns2:varName "rule" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object ns1:Attribute .
+
+_:genid884
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:exists ;
+      ns2:elements (
+       _:genid888
+       _:genid893
+       _:genid897
+     )
+    ] ;
+    ns2:arg1 [
+      a ns2:or ;
+      ns2:arg2 [
+        a ns2:and ;
+        ns2:arg2 [
+          a ns2:gt ;
+          ns2:arg2 [ ns2:varName "maxCount" ] ;
+          ns2:arg1 [
+            a ns1:objectCount ;
+            ns2:arg2 [ ns2:varName "predicate" ] ;
+            ns2:arg1 ns0:_this
+          ]
+        ] ;
+        ns2:arg1 [
+          a ns2:bound ;
+          ns2:arg1 [ ns2:varName "maxCount" ]
+        ]
+      ] ;
+      ns2:arg1 [
+        a ns2:and ;
+        ns2:arg2 [
+          a ns2:lt ;
+          ns2:arg2 [ ns2:varName "minCount" ] ;
+          ns2:arg1 [
+            a ns1:objectCount ;
+            ns2:arg2 [ ns2:varName "predicate" ] ;
+            ns2:arg1 ns0:_this
+          ]
+        ] ;
+        ns2:arg1 [
+          a ns2:bound ;
+          ns2:arg1 [ ns2:varName "minCount" ]
+        ]
+      ]
+    ]
+  ] .
+
+_:genid888
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:bound ;
+      ns2:arg1 [ ns2:varName "valueType" ]
+    ]
+  ] .
+
+_:genid893
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "predicate" ] ;
+  ns2:object [ ns2:varName "value" ] .
+
+_:genid897
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:not ;
+    ns2:arg1 [
+      a ns1:instanceOf ;
+      ns2:arg2 [ ns2:varName "valueType" ] ;
+      ns2:arg1 [ ns2:varName "value" ]
+    ]
+  ] .
+
+_:genid918
+  ns2:subject _:genid920 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid921
+  ns2:subject _:genid920 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid923
+  ns2:subject _:genid920 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "predicate" ] .
+
+_:genid927 ns2:varName "class" .
+_:genid929 ns2:varName "property" .
+_:genid931 ns2:varName "rule" .
+_:genid937
+  ns2:subject [ ns2:varName "subject" ] ;
+  ns2:predicate ns0:_arg1 ;
+  ns2:object ns0:_arg2 .
+
+_:genid940 ns2:varName "subject" .
+_:genid948
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "class" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object [ ns2:varName "atClass" ] .
+
+_:genid953
+  ns2:subject [ ns2:varName "atClass" ] ;
+  ns2:predicate ns0:constraint ;
+  ns2:object [ ns2:varName "arg" ] .
+
+_:genid957
+  ns2:subject [ ns2:varName "arg" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object ns1:Argument .
+
+_:genid960 ns2:varName "arg" .
+_:genid962 ns2:varName "atClass" .
+_:genid974
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "primaryKey" ] ;
+  ns2:expression [
+    a ns1:primaryKeyProperty ;
+    ns3:class [ ns2:varName "class" ]
+  ] .
+
+_:genid979
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:bound ;
+    ns2:arg1 [ ns2:varName "primaryKey" ]
+  ] .
+
+_:genid988
+  ns2:subject [ ns2:varName "instance" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object [ ns2:varName "type" ] .
+
+_:genid992
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "pk" ] ;
+  ns2:expression [
+    a ns1:primaryKeyProperty ;
+    ns3:class [ ns2:varName "type" ]
+  ] .
+
+_:genid997
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:eq ;
+    ns2:arg2 [ ns2:varName "pk" ] ;
+    ns2:arg1 [ ns2:varName "property" ]
+  ] .
+
+_:genid1005
+  ns2:subject ns0:_this ;
+  ns2:predicate [ ns2:varName "property" ] ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid1009
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:gt ;
+        ns2:arg2 [ ns2:varName "max" ] ;
+        ns2:arg1 [ ns2:varName "object" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "max" ]
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:lt ;
+        ns2:arg2 [ ns2:varName "min" ] ;
+        ns2:arg1 [ ns2:varName "object" ]
+      ] ;
+      ns2:arg1 [
+        a ns2:bound ;
+        ns2:arg1 [ ns2:varName "min" ]
+      ]
+    ]
+  ] .
+
+_:genid1024
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "message" ] ;
+  ns2:expression [
+    a ns2:concat ;
+    ns2:arg7 "]" ;
+    ns2:arg6 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "max" ]
+    ] ;
+    ns2:arg5 ", " ;
+    ns2:arg4 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "min" ]
+    ] ;
+    ns2:arg3 " must be in the interval [" ;
+    ns2:arg2 [
+      a ns2:str ;
+      ns2:arg1 [ ns2:varName "object" ]
+    ] ;
+    ns2:arg1 "Value "
+  ] .
+
+_:genid1034
+  ns2:subject _:genid1036 ;
+  ns2:predicate rdf:type ;
+  ns2:object ns0:ConstraintViolation .
+
+_:genid1037
+  ns2:subject _:genid1036 ;
+  ns2:predicate ns0:violationRoot ;
+  ns2:object ns0:_this .
+
+_:genid1039
+  ns2:subject _:genid1036 ;
+  ns2:predicate ns0:violationPath ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid1042
+  ns2:subject _:genid1036 ;
+  ns2:predicate ns0:violationValue ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid1045
+  ns2:subject _:genid1036 ;
+  ns2:predicate rdfs:label ;
+  ns2:object [ ns2:varName "message" ] .
+
+_:genid1049 ns2:varName "constraint" .
+_:genid1050
+  rdf:rest ( _:genid1051 ) ;
+  rdf:first [
+    a ns2:TriplePath ;
+    ns2:subject [ ns2:varName "class" ] ;
+    ns2:path [
+      a ns2:ModPath ;
+      ns2:subPath rdfs:subClassOf ;
+      ns2:modMin 0 ;
+      ns2:modMax -2
+    ] ;
+    ns2:object ns0:_arg2
+  ] .
+
+_:genid1051
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate rdf:type ;
+  ns2:object [ ns2:varName "class" ] .
+
+_:genid1059
+  rdf:rest ( ) ;
+  rdf:first (
+   _:genid1060
+   _:genid1064
+   _:genid1068
+ ) .
+
+_:genid1060
+  rdf:rest ( ) ;
+  rdf:first [
+    a ns2:Filter ;
+    ns2:expression [
+      a ns2:isLiteral ;
+      ns2:arg1 ns0:_arg1
+    ]
+  ] .
+
+_:genid1064
+  a ns2:Bind ;
+  ns2:variable [ ns2:varName "datatype" ] ;
+  ns2:expression [
+    a ns2:datatype ;
+    ns2:arg1 ns0:_arg1
+  ] .
+
+_:genid1068
+  a ns2:Filter ;
+  ns2:expression [
+    a ns2:or ;
+    ns2:arg2 [
+      a ns2:and ;
+      ns2:arg2 [
+        a ns2:eq ;
+        ns2:arg2 xsd:string ;
+        ns2:arg1 ns0:_arg2
+      ] ;
+      ns2:arg1 [
+        a ns2:or ;
+        ns2:arg2 [
+          a ns2:eq ;
+          ns2:arg2 [ ns2:varName "datatype" ] ;
+          ns2:arg1 rdf:langString
+        ] ;
+        ns2:arg1 [
+          a ns2:not ;
+          ns2:arg1 [
+            a ns2:bound ;
+            ns2:arg1 [ ns2:varName "datatype" ]
+          ]
+        ]
+      ]
+    ] ;
+    ns2:arg1 [
+      a ns2:or ;
+      ns2:arg2 [
+        a ns2:eq ;
+        ns2:arg2 rdfs:Literal ;
+        ns2:arg1 ns0:_arg2
+      ] ;
+      ns2:arg1 [
+        a ns2:eq ;
+        ns2:arg2 ns0:_arg2 ;
+        ns2:arg1 [ ns2:varName "datatype" ]
+      ]
+    ]
+  ] .
+
+_:genid1083
+  a ns2:Count ;
+  ns2:expression [ ns2:varName "object" ] .
+
+_:genid1085
+  a ns2:isBlank ;
+  ns2:arg1 ns0:_arg1 .
+
+_:genid1088 ns2:varName "object" .
+_:genid1091
+  ns2:subject _:genid1049 ;
+  ns2:predicate ns3:property ;
+  ns2:object [ ns2:varName "property" ] .
+
+_:genid1094
+  ns2:subject [ ns2:varName "constraint" ] ;
+  ns2:predicate rdf:type ;
+  ns2:object ns1:PrimaryKeyPropertyConstraint .
+
+_:genid1096
+  a ns2:or ;
+  ns2:arg2 _:genid1085 ;
+  ns2:arg1 [
+    a ns2:isIRI ;
+    ns2:arg1 ns0:_arg1
+  ] .
+
+_:genid1098
+  ns2:subject [ ns2:varName "type" ] ;
+  ns2:predicate ns0:constraint ;
+  ns2:object [ ns2:varName "constraint" ] .
+
+_:genid1106
+  a ns2:Union ;
+  ns2:elements (
+   _:genid1109
+   _:genid1061
+ ) .
+
+_:genid1109
+  rdf:rest (
+   _:genid1054
+   _:genid1051
+ ) ;
+  rdf:first ( _:genid1110 ) .
+
+_:genid1110
+  a ns2:Filter ;
+  ns2:expression _:genid1096 .
+
+_:genid1114
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate ns0:_arg2 ;
+  ns2:object [ ns2:varName "object" ] .
+
+_:genid1119
+  ns2:varName "result" ;
+  ns2:expression _:genid1083 .
+
+_:genid1129 ns2:varName "property" .
+_:genid1133 ns2:varName "object" .
+_:genid1134 ns2:varName "type" .
+_:genid1143
+  a ns2:TriplePath ;
+  ns2:subject [ ns2:varName "class" ] ;
+  ns2:path [
+    a ns2:ModPath ;
+    ns2:subPath rdfs:subClassOf ;
+    ns2:modMin 0 ;
+    ns2:modMax -2
+  ] ;
+  ns2:object _:genid1134 .
+
+_:genid1152
+  ns2:subject ns0:_arg1 ;
+  ns2:predicate ns0:_arg2 ;
+  ns2:object _:genid1133 .
+
