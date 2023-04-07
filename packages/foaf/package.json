@@ -1,0 +1,14 @@
+{
+  "name": "@rdf-library/foaf",
+  "version": "0.1.0",
+  "description": "Friend of a Friend (FOAF)",
+  "license": "CC-BY-1.0",
+  "author": "Dan Brickley, Libby Miller",
+  "ontologies": {
+    "http://xmlns.com/foaf/0.1/": "foaf.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*"
+  }
+}
