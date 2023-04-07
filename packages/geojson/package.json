@@ -1,0 +1,14 @@
+{
+  "name": "@rdf-library/geojson",
+  "version": "1.1.0",
+  "description": "GeoJSON-LD Vocabulary",
+  "license": "CC-BY-4.0",
+  "author": "Sean Gillies",
+  "ontologies": {
+    "http://purl.org/geojson/vocab": "vocab.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*"
+  }
+}
