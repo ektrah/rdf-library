@@ -5,7 +5,7 @@
   "license": "CC-BY-SA-3.0",
   "author": "TopQuadrant",
   "ontologies": {
-    "http://voag.linkedmodel.org/2.0/schema/voag": "voag.ttl"
+    "http://voag.linkedmodel.org/2.0/schema/voag": "voag.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",

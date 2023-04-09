@@ -1,0 +1,55 @@
+--- voag.ttl	2023-04-09 15:29:08.012913100 +0200
++++ voag.patched.ttl	2023-04-09 15:42:15.226514400 +0200
+@@ -16,29 +16,6 @@
+ @prefix void: <http://rdfs.org/ns/void#> .
+ @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+-dct:description
+-  rdfs:label "description"^^xsd:string ;
+-  rdfs:range xsd:string ;
+-.
+-dct:subject
+-  rdf:type owl:AnnotationProperty ;
+-  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+-  rdfs:label "subject"^^xsd:string ;
+-  rdfs:range xsd:string ;
+-.
+-dct:title
+-  rdf:type owl:AnnotationProperty ;
+-  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+-  rdfs:label "title"^^xsd:string ;
+-  rdfs:range xsd:string ;
+-.
+-void:Dataset
+-  rdf:type owl:Class ;
+-  dct:description "A set of RDF triples that are published, maintained or aggregated by a single provider."^^xsd:string ;
+-  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+-  rdfs:label "VOID Dataset"^^xsd:string ;
+-  rdfs:subClassOf voag:GovernedObject ;
+-.
+ <http://voag.linkedmodel.org/2.0/schema/voag>
+   rdf:type owl:Ontology ;
+   dct:author "Ralph Hodgson"^^xsd:string ;
+@@ -2969,22 +2946,3 @@
+   rdfs:label "wintnessed by"^^xsd:string ;
+   rdfs:subPropertyOf voag:isGovernedBy ;
+ .
+-prov:Entity
+-  rdf:type owl:Class ;
+-  dct:description "self-explanatory"^^xsd:string ;
+-  rdfs:label "Entity"^^xsd:string ;
+-.
+-prov:wasInfluencedBy
+-  rdf:type rdf:Property ;
+-  rdfs:isDefinedBy <http://www.w3.org/TR/prov-o/> ;
+-  rdfs:seeAlso prov:wasInfluencedBy ;
+-.
+-(
+-  voag:WidelyAdopted
+-  voag:SomeAdoption
+-  voag:EarlyAdoption
+-  voag:Proposed
+-  voag:UnknownMaturity
+-  voag:Experimental
+-  voag:InDevelopment
+-).
