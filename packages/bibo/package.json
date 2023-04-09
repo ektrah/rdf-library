@@ -5,7 +5,7 @@
   "license": "CC-BY-4.0",
   "author": "DCMI",
   "ontologies": {
-    "http://purl.org/ontology/bibo/": "bibo.ttl"
+    "http://purl.org/ontology/bibo/": "bibo.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",

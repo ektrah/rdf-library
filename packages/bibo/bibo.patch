@@ -1,0 +1,224 @@
+--- bibo.ttl	2023-04-09 10:23:20.915423800 +0200
++++ bibo.patched.ttl	2023-04-09 10:23:41.062351200 +0200
+@@ -21,84 +21,6 @@
+ sources."""@en ;
+   dc:creator bibo:bdarcus, bibo:fgiasson .
+ 
+-dc:creator a owl:AnnotationProperty .
+-dc:description
+-  a owl:AnnotationProperty, owl:DatatypeProperty ;
+-  skos:scopeNote "Used to describe a bibliographic resource."@en .
+-
+-dc:identifier a owl:AnnotationProperty .
+-dc:title
+-  a owl:AnnotationProperty, owl:ObjectProperty ;
+-  skos:scopeNote "Used to describe the title of a bibliographic resource"@en .
+-
+-owl:deprecated a owl:AnnotationProperty .
+-<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a owl:AnnotationProperty .
+-skos:changeNote a owl:AnnotationProperty .
+-skos:editorialNote a owl:AnnotationProperty .
+-skos:example a owl:AnnotationProperty .
+-skos:historyNote a owl:AnnotationProperty .
+-skos:note a owl:AnnotationProperty .
+-skos:scopeNote a owl:AnnotationProperty .
+-<http://purl.org/NET/c4dm/event.owl#agent>
+-  a owl:ObjectProperty ;
+-  skos:changeNote "Used to link an agent (a person) to an event (a conference, an hearing, etc.)"@en .
+-
+-<http://purl.org/NET/c4dm/event.owl#place>
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to relate an event such as a conference to the geographical place where it happens, for example Paris."@en .
+-
+-<http://purl.org/NET/c4dm/event.owl#produced_in> a owl:ObjectProperty .
+-<http://purl.org/NET/c4dm/event.owl#product>
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link an event such as a conference to an outcome (a product) of that event, for example, an article, a proceeding, etc."@en .
+-
+-<http://purl.org/NET/c4dm/event.owl#sub_event>
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link big events with smaller events such as workshops that happen in the context of a conference."@en .
+-
+-<http://purl.org/NET/c4dm/event.owl#time>
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to describe the timing of an event. For example, when a conference starts and stops."@en .
+-
+-dc:contributor
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link a bibliographic item to one of its contributor: can be an author, an editor, a publisher, etc."@en .
+-
+-dc:format
+-  a owl:ObjectProperty ;
+-  skos:example """<dcterms:format>
+-   <dcterms:MediaTypeOrExtent>
+-     <rdf:value>text/html</rdf:value>
+-     <rdfs:label>HTML</rdfs:label>
+-   </dcterms:MediaTypeOrExtent>
+- </dcterms:format>"""@en ;
+-  skos:scopeNote "Used to describe the format of a bibliographic resource."@en .
+-
+-dc:hasPart a owl:ObjectProperty .
+-dc:isPartOf a owl:ObjectProperty .
+-dc:isReferencedBy
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to relate a reference citation to a bibliographic resource."@en .
+-
+-dc:isVersionOf a owl:ObjectProperty .
+-dc:language
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link a bibliographic resource to the language used to express it."@en .
+-
+-dc:publisher
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link a bibliographic item to its publisher."@en .
+-
+-dc:references a owl:ObjectProperty .
+-dc:relation a owl:ObjectProperty .
+-dc:rights
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to describe rights related to a bibliographic resource."@en .
+-
+-dc:subject
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to describe the subject of a bibliographic resource."@en .
+-
+ bibo:affirmedBy
+   a owl:ObjectProperty ;
+   rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+@@ -442,78 +364,6 @@
+    )
+   ] .
+ 
+-rdf:value
+-  a owl:ObjectProperty ;
+-  skos:scopeNote """Used to describe the content of a bibo:Document and othr bibliographic resouces.
+-
+-We suggest to use this property instead of the deprecated "bibo:content" one."""@en .
+-
+-foaf:based_near
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link an agent, related to bibliographic things, to a place where it is based near: can be a city, a monument, a building, etc."@en .
+-
+-foaf:depiction
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link an agent with an image that depict it."@en .
+-
+-foaf:homepage
+-  a owl:ObjectProperty ;
+-  skos:scopeNote "Used to link an agent to its homepage (which is a web page accessible using a URL)."@en .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/doi>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:doi .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/eIssn>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:eissn .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/edition>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:edition .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/endingPage>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:pageEnd .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/isbn>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:isbn .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/issn>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:issn .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/issue>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:issue .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/number>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:locator .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/startingPage>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:pageStart .
+-
+-<http://prismstandard.org/namespaces/1.2/basic/volume>
+-  a owl:DatatypeProperty ;
+-  owl:equivalentProperty bibo:volume .
+-
+-dc:created
+-  a owl:DatatypeProperty ;
+-  skos:scopeNote "Used to describe the creation date of a bibliographic item"@en ;
+-  rdfs:subPropertyOf dc:date .
+-
+-dc:date
+-  a owl:DatatypeProperty ;
+-  skos:scopeNote "Use to link a bibliographic item to the date of an event. Check dcterms:created and other for proper specializations for this property"@en .
+-
+-dc:issued
+-  a owl:DatatypeProperty ;
+-  skos:scopeNote "Used to describe the issue date of a bibliographic resource"@en ;
+-  rdfs:subPropertyOf dc:date .
+-
+ bibo:abstract
+   a owl:DatatypeProperty ;
+   rdfs:label "abstract" ;
+@@ -892,32 +742,6 @@
+   rdfs:subPropertyOf bibo:locator ;
+   rdfs:range rdfs:Literal .
+ 
+-<http://schemas.talis.com/2005/address/schema#localityName>
+-  a owl:DatatypeProperty ;
+-  skos:scopeNote "Used to name the locality of a publisher, an author, etc."@en .
+-
+-foaf:family_name
+-  a owl:DatatypeProperty ;
+-  skos:scopeNote "This is the property we choose to use to describe the family name of a person related to a bibliographic resource."@en .
+-
+-foaf:givenname
+-  a owl:DatatypeProperty ;
+-  skos:scopeNote "This is the property we choose to describe the given name of a Person related to a bibliographic resource. This is the first name of a person."@en .
+-
+-foaf:name a owl:DatatypeProperty .
+-<http://purl.org/NET/c4dm/event.owl#Event>
+-  a owl:Class ;
+-  skos:scopeNote "Used to describe bibliographic related events such as conferences, hearing, etc."@en .
+-
+-dc:Agent
+-  a owl:Class ;
+-  owl:equivalentClass foaf:Agent ;
+-  skos:editorialNote """BIBO assert that a dcterms:Agent is an equivalent class to foaf:Agent.
+-This means that all the individuals belonging to the foaf:Agent class
+-also belongs to the dcterms:Agent class. This way, dcterms:contributor
+-can be used on foaf:Person, foaf:Organization, foaf:Agent and foaf:Group.
+-Even if this link is not done in neither the FOAF nor the DCTERMS ontologies this is a wide spread fact that is asserted by BIBO."""@en .
+-
+ bibo:AcademicArticle
+   a owl:Class ;
+   rdfs:label "Academic Article"@en ;
+@@ -1480,24 +1304,6 @@
+   rdfs:comment "A seminar, discussion group, or the like, that emphasizes zxchange of ideas and the demonstration and application of techniques, skills, etc."@en ;
+   vs:term_status "stable" .
+ 
+-rdf:List a owl:Class .
+-rdf:Seq a owl:Class .
+-rdfs:Resource a owl:Class .
+-owl:Thing a owl:Class .
+-foaf:Agent
+-  a owl:Class ;
+-  skos:scopeNote "Used to describe any \"agent\" related to bibliographic items. Such agents can be persons, organizations or groups of any kind."@en .
+-
+-foaf:Document a owl:Class .
+-foaf:Image a owl:Class .
+-foaf:Organization
+-  a owl:Class ;
+-  skos:scopeNote "Ued to describe an organization related to bibliographic items such as a publishing company, etc."@en .
+-
+-foaf:Person
+-  a owl:Class ;
+-  skos:scopeNote "Used to describe a Person related to a bibliographic ite such as an author, an editor, etc."@en .
+-
+ bibo:bdarcus
+   a owl:Thing, owl:NamedIndividual, foaf:Person ;
+   rdfs:seeAlso "http://purl.org/net/darcusb/info#me"^^xsd:anyURI ;
