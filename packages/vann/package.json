@@ -5,7 +5,7 @@
   "license": "CC-BY-1.0",
   "author": "Ian Davis",
   "ontologies": {
-    "http://purl.org/vocab/vann/": "vann.ttl"
+    "http://purl.org/vocab/vann/": "vann.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",
