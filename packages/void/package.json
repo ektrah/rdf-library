@@ -1,0 +1,16 @@
+{
+  "name": "@rdf-library/void",
+  "version": "1.0.0",
+  "description": "Vocabulary of Interlinked Datasets (VoID)",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://rdfs.org/ns/void": "void.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/foaf": "*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/vann": "*"
+  }
+}
