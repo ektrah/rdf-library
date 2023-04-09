@@ -1,0 +1,128 @@
+--- vaem.ttl	2023-04-09 10:36:17.117746000 +0200
++++ vaem.patched.ttl	2023-04-09 10:37:01.812983700 +0200
+@@ -273,24 +273,6 @@
+   ns0:namespace "http://www.linkedmodel.org/schema/vaem#"^^xsd:anyURI ;
+   ns0:title "Vocabulary for Attaching Essential Metadata (VAEM) - Version 2.0"^^xsd:string .
+ 
+-dc:modified
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:date ;
+-  rdfs:label "modified"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+-dc:abstract
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "abstract"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+-dc:created
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:date ;
+-  rdfs:label "created"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:SchemaGraph
+   a ns0:GraphRole ;
+   rdfs:label "Schema graph"^^xsd:string ;
+@@ -304,18 +286,6 @@
+   ns0:url "http:/www.topquadrant.com"^^xsd:anyURI ;
+   ns0:name "TopQuadrant, Inc."^^xsd:string .
+ 
+-dc:title
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "title"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+-dc:author
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "author"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:hasGraphRole
+   a owl:ObjectProperty ;
+   rdfs:range ns0:GraphRole ;
+@@ -481,12 +451,6 @@
+   ns0:filePrefix "LINKSET"^^xsd:string ;
+   dc:description "A \"vaem:LinkSetGraph\" is a graph that holds statements that specify links between resources"^^xsd:string .
+ 
+-dc:rights
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "rights"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:MappingGraph
+   a ns0:GraphRole ;
+   rdfs:label "Mapping graph"^^xsd:string ;
+@@ -500,24 +464,12 @@
+   rdfs:isDefinedBy <http://www.linkedmodel.org/schema/vaem>, <http://www.linkedmodel.org/2.0/schema/vaem> ;
+   ns0:filePrefix "VIEWS"^^xsd:string .
+ 
+-dc:creator
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "creator"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:ControllersGraph
+   a ns0:GraphRole ;
+   rdfs:label "Controllers graph"^^xsd:string ;
+   rdfs:isDefinedBy <http://www.linkedmodel.org/schema/vaem>, <http://www.linkedmodel.org/2.0/schema/vaem> ;
+   ns0:filePrefix "CONTROLLERS"^^xsd:string .
+ 
+-dc:description
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "description"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:ownedBy dc:description "The property \"vaem:ownedBy\" is a general property that in some cases could have scalar values or may refer to some concept of \"Party\".  For this reason, the  type of this property is set as \"rdf:Property\" and the property is rangeless. There are two sub-properties of \"vaem:ownedBy\", namely \"vaem:owner\" for string values and \"vaem:owningParty\" for referencing a party.  Ownership applies to those ontologies that are proprietary"^^xsd:string .
+ ns0:TransformsGraph
+   a ns0:GraphRole ;
+@@ -526,11 +478,6 @@
+   ns0:filePrefix "TRANSFORMS"^^xsd:string .
+ 
+ ns0:owningParty dc:description "The property \"vaem:owningParty\" is used to refer to some concept of \"Party\" and is a sub-property of \"vaem:ownedBy\""^^xsd:string .
+-dc:subject
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "subject"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+ 
+ ns0:DataGraph
+   a ns0:GraphRole ;
+@@ -597,12 +544,6 @@
+   ns0:filePrefix "COLLECTION"^^xsd:string ;
+   dc:description "A \"vaem:CollectionGraph\" is a graph that aggregates other graphs using \"owl:imports\" statements"^^xsd:string .
+ 
+-dc:replaces
+-  a owl:AnnotationProperty ;
+-  rdfs:range rdfs:Resource ;
+-  rdfs:label "replaces"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:CatalogEntry dc:description "VAEM Governed Object class is a placeholder for concepts that are fully defined by the voag:GovernedObject concept hierarchy for building a catalog of ontologies and graphs"^^xsd:string .
+ ns0:ScriptGraph
+   a ns0:GraphRole ;
+@@ -632,12 +573,6 @@
+   rdfs:isDefinedBy <http://www.linkedmodel.org/schema/vaem>, <http://www.linkedmodel.org/2.0/schema/vaem> ;
+   dc:description "An annotation used to reference a graph that elaborates (adds properties and axioms to) a resource"^^xsd:string .
+ 
+-dc:contributor
+-  a owl:AnnotationProperty ;
+-  rdfs:range xsd:string ;
+-  rdfs:label "contributor"^^xsd:string ;
+-  rdfs:isDefinedBy dc: .
+-
+ ns0:CurationGraph
+   a ns0:GraphRole ;
+   rdfs:label "Curation graph"^^xsd:string ;
+@@ -651,5 +586,3 @@
+   rdfs:isDefinedBy <http://www.linkedmodel.org/schema/vaem>, <http://www.linkedmodel.org/2.0/schema/vaem> ;
+   ns0:filePrefix "CONSTRAINTS"^^xsd:string ;
+   dc:description "A \"vaem:ConstraintsGraph\" is a graph that holds SPIN constraints"^^xsd:string .
+-
+-owl:Ontology ns0:hasGraphMetadata ns0:GMD_VAEM .
