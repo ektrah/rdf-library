@@ -1,0 +1,21 @@
+--- prov-links.ttl	2023-04-09 12:23:27.364252000 +0200
++++ prov-links.patched.ttl	2023-04-09 12:49:13.663772000 +0200
+@@ -3,18 +3,6 @@
+ @prefix owl: <http://www.w3.org/2002/07/owl#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ 
+-rdfs:comment a owl:AnnotationProperty .
+-
+-rdfs:isDefinedBy a owl:AnnotationProperty .
+-
+-rdfs:label a owl:AnnotationProperty .
+-
+-rdfs:seeAlso a owl:AnnotationProperty .
+-
+-owl:Thing a owl:Class .
+-
+-owl:versionInfo a owl:AnnotationProperty .
+-
+ prov:asInBundle a owl:ObjectProperty ;
+     rdfs:label "asInBundle" ;
+     rdfs:comment """prov:asInBundle is used to specify which bundle the general entity of a prov:mentionOf property is described.

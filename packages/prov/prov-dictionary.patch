@@ -1,0 +1,12 @@
+--- prov-dictionary.ttl	2023-04-09 12:48:47.682394000 +0200
++++ prov-dictionary.patched.ttl	2023-04-09 12:49:52.568591000 +0200
+@@ -12,9 +12,6 @@
+     rdfs:label "W3C PROVenance Interchange Ontology (PROV-O) Dictionary Extension"@en ;
+     rdfs:seeAlso <http://www.w3.org/TR/prov-dictionary/>, <http://www.w3.org/ns/prov> .
+ 	
+-<http://www.w3.org/ns/prov#>
+-    a owl:Ontology .
+-
+ :Dictionary
+ 	a owl:Class ;
+ 	rdfs:isDefinedBy <http://www.w3.org/ns/prov#> ;

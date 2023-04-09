@@ -1,0 +1,35 @@
+--- prov-o.ttl	2023-04-09 12:24:00.588208700 +0200
++++ prov-o.patched.ttl	2023-04-09 12:50:14.902394700 +0200
+@@ -4,32 +4,6 @@
+ @prefix owl: <http://www.w3.org/2002/07/owl#> .
+ @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+-rdfs:comment
+-    a owl:AnnotationProperty ;
+-    rdfs:comment ""@en ;
+-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
+-
+-rdfs:isDefinedBy
+-    a owl:AnnotationProperty .
+-
+-rdfs:label
+-    a owl:AnnotationProperty ;
+-    rdfs:comment ""@en ;
+-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
+-
+-rdfs:seeAlso
+-    a owl:AnnotationProperty ;
+-    rdfs:comment ""@en .
+-
+-owl:Thing
+-    a owl:Class .
+-
+-owl:versionInfo
+-    a owl:AnnotationProperty .
+-
+-<http://www.w3.org/ns/prov#>
+-    a owl:Ontology .
+-
+ :Activity
+     a owl:Class ;
+     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;

@@ -1,0 +1,90 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix :     <http://www.w3.org/ns/prov#> .
+
+<http://www.w3.org/ns/prov-aq#>
+    a owl:Ontology ;
+    rdfs:comment "0.2"^^xsd:string, """This document is published by the Provenance Working Group (http://www.w3.org/2011/prov/wiki/Main_Page). 
+
+If you wish to make comments regarding this document, please send them to public-prov-comments@w3.org (subscribe public-prov-comments-request@w3.org, archives http://lists.w3.org/Archives/Public/public-prov-comments/). All feedback is welcome."""@en ;
+    rdfs:label "PROV Access and Query Ontology"@en ;
+    rdfs:seeAlso <http://www.w3.org/ns/prov#>, <http://www.w3.org/TR/prov-aq/> ;
+    owl:versionIRI <http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/> .
+
+
+##prov-aq definitions
+ 
+
+prov:ServiceDescription
+    a owl:Class ;
+    rdfs:comment "Type for a generic provenance query service. Mainly for use in RDF provenance query service descriptions, to facilitate discovery in linked data environments." ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "ServiceDescription" ;
+    rdfs:subClassOf prov:SoftwareAgent ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/#provenance-query-service-discovery"^^xsd:anyURI ;
+    :category "access-and-query" .
+    
+prov:DirectQueryService
+    a owl:Class ;
+    rdfs:comment "Type for a generic provenance query service. Mainly for use in RDF provenance query service descriptions, to facilitate discovery in linked data environments." ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "ProvenanceService" ;
+    rdfs:subClassOf prov:SoftwareAgent ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/#provenance-query-service-discovery"^^xsd:anyURI ;
+    :category "access-and-query" .
+
+prov:has_anchor
+    a owl:ObjectProperty ;
+    rdfs:comment "Indicates anchor URI for a potentially dynamic resource instance."@en ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "has_anchor" ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/#resource-represented-as-html"^^xsd:anyURI ;
+    :category "access-and-query" ;
+    :inverse "anchorOf" .
+
+prov:has_provenance
+    a owl:ObjectProperty ;
+    rdfs:comment "Indicates a provenance-URI for a resource; the resource identified by this property presents a provenance record about its subject or anchor resource."@en ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "has_provenance" ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/#resource-represented-as-html"^^xsd:anyURI ;
+    :category "access-and-query" ;
+    :inverse "provenanceOf" .
+
+prov:has_query_service
+    a owl:ObjectProperty ;
+    rdfs:comment "Indicates a provenance query service that can access provenance related to its subject or anchor resource."@en ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "hasProvenanceService" ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/"^^xsd:anyURI ;
+    :category "access-and-query" ;
+    :inverse "provenanceQueryServiceOf" .
+    
+prov:describesService
+    a owl:ObjectProperty ;
+    rdfs:comment "relates a generic provenance query service resource (type prov:ServiceDescription) to a specific query service description (e.g. a prov:DirectQueryService or a sd:Service)."@en ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "describesService" ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/rovenance-query-service-description"^^xsd:anyURI ;
+    :category "access-and-query" ;
+    :inverse "serviceDescribedBy" .
+    
+
+prov:provenanceUriTemplate
+    a owl:DatatypeProperty ;
+    rdfs:comment "Relates a provenance service to a URI template string for constructing provenance-URIs."@en ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "provenanceUriTemplate" ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/"^^xsd:anyURI ;
+    :category "access-and-query" .
+    
+prov:pingback
+    a owl:ObjectProperty ;
+    rdfs:comment "Relates a resource to a provenance pingback service that may receive additional provenance links about the resource."@en ;
+    rdfs:isDefinedBy <http://www.w3.org/ns/prov-aq#> ;
+    rdfs:label "provenance pingback" ;
+    :aq "http://www.w3.org/TR/2013/NOTE-prov-aq-20130430/#provenance-pingback"^^xsd:anyURI ;
+    :category "access-and-query" .

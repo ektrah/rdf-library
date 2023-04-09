@@ -5,13 +5,13 @@
   "license": "W3C",
   "author": "W3C",
   "ontologies": {
-    "http://www.w3.org/ns/prov": "prov.ttl",
-    "http://www.w3.org/ns/prov-aq": "prov-aq.ttl",
-    "http://www.w3.org/ns/prov-dc": "prov-dc.ttl",
-    "http://www.w3.org/ns/prov-dictionary": "prov-dictionary.ttl",
-    "http://www.w3.org/ns/prov-links": "prov-links.ttl",
-    "http://www.w3.org/ns/prov-o": "prov-o.ttl",
-    "http://www.w3.org/ns/prov-o-inverses": "prov-o-inverses.ttl"
+    "http://www.w3.org/ns/prov": "prov.patched.ttl",
+    "http://www.w3.org/ns/prov-aq": "prov-aq.patched.ttl",
+    "http://www.w3.org/ns/prov-dc": "prov-dc.patched.ttl",
+    "http://www.w3.org/ns/prov-dictionary": "prov-dictionary.patched.ttl",
+    "http://www.w3.org/ns/prov-links": "prov-links.patched.ttl",
+    "http://www.w3.org/ns/prov-o": "prov-o.patched.ttl",
+    "http://www.w3.org/ns/prov-o-inverses": "prov-o-inverses.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/owl": "2.*"
