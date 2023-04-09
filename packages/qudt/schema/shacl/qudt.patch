@@ -1,0 +1,79 @@
+--- qudt.ttl	2023-04-09 13:02:07.110460200 +0200
++++ qudt.patched.ttl	2023-04-09 14:51:21.187387600 +0200
+@@ -21,52 +21,6 @@
+ @prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
+ @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+-dcterms:abstract
+-  a rdf:Property ;
+-  rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
+-  rdfs:label "abstract" ;
+-.
+-dcterms:contributor
+-  a rdf:Property ;
+-  rdfs:label "contributor" ;
+-.
+-dcterms:created
+-  a rdf:Property ;
+-  rdfs:label "created" ;
+-.
+-dcterms:creator
+-  a rdf:Property ;
+-  rdfs:label "creator" ;
+-.
+-dcterms:description
+-  a rdf:Property ;
+-  rdfs:label "description" ;
+-.
+-dcterms:isReplacedBy
+-  a rdf:Property ;
+-  rdfs:label "is replaced by" ;
+-.
+-dcterms:modified
+-  a rdf:Property ;
+-  rdfs:label "modified" ;
+-.
+-dcterms:rights
+-  a rdf:Property ;
+-  rdfs:label "rights" ;
+-.
+-dcterms:source
+-  a rdf:Property ;
+-  rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
+-  rdfs:label "source" ;
+-.
+-dcterms:subject
+-  a rdf:Property ;
+-  rdfs:label "subject" ;
+-.
+-dcterms:title
+-  a rdf:Property ;
+-  rdfs:label "title" ;
+-.
+ <http://qudt.org/2.1/schema/shacl/qudt>
+   a owl:Ontology ;
+   vaem:hasGraphMetadata vaem:GMD_SHACLQUDT-SCHEMA ;
+@@ -3321,15 +3275,6 @@
+   rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
+   rdfs:label "QUDT Schema Catalog Entry" ;
+ .
+-voag:supersededBy
+-  a rdf:Property ;
+-  rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
+-  rdfs:label "superseded by" ;
+-.
+-<http://www.linkedmodel.org/schema/dtype>
+-  vaem:namespace "http://www.linkedmodel.org/schema/dtype#"^^xsd:anyURI ;
+-  vaem:namespacePrefix "dtype" ;
+-.
+ vaem:GMD_SHACLQUDT-SCHEMA
+   a vaem:GraphMetaData ;
+   dcterms:contributor "Daniel Mekonnen" ;
+@@ -3397,7 +3342,3 @@
+   rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
+   rdfs:label "QUDT" ;
+ .
+-prov:wasDerivedFrom
+-  a rdf:Property ;
+-  rdfs:label "was derived from" ;
+-.

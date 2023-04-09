@@ -14,7 +14,7 @@
 | vocab/sou.ttl                     | Fetched from <http://qudt.org/2.1/vocab/sou>                                      |
 | vocab/unit.ttl                    | Fetched from <http://qudt.org/2.1/vocab/unit>                                     |
 
-Last Update: 2023-04-03
+Last Update: 2023-04-09
 
 * [qudt.org](https://www.qudt.org/)
 * [QUDT - public repository](https://github.com/qudt/qudt-public-repo)
