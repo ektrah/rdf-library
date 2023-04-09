@@ -5,7 +5,7 @@
   "license": "CC-BY-1.0",
   "author": "Dan Brickley and Libby Miller",
   "ontologies": {
-    "http://xmlns.com/foaf/0.1/": "foaf.ttl"
+    "http://xmlns.com/foaf/0.1/": "foaf.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",
