@@ -1,0 +1,57 @@
+--- VOCAB_QUDT-MATHEMATICS-v2.1.18.ttl	2023-04-13 23:41:04.155136400 +0200
++++ VOCAB_QUDT-MATHEMATICS-v2.1.18.patched.ttl	2023-04-13 23:51:45.884172000 +0200
+@@ -18,54 +18,6 @@
+ @prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+ @prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
+ @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+-
+-dcterms:contributor
+-  a rdf:Property ;
+-  rdfs:range xsd:string ;
+-.
+-dcterms:created
+-  a rdf:Property ;
+-  rdfs:label "created" ;
+-  rdfs:range xsd:date ;
+-.
+-dcterms:creator
+-  a rdf:Property ;
+-  a owl:AnnotationProperty ;
+-  rdfs:label "creator" ;
+-  rdfs:range xsd:string ;
+-.
+-dcterms:description
+-  a rdf:Property ;
+-  a owl:AnnotationProperty ;
+-  rdfs:label "description" ;
+-  rdfs:range xsd:string ;
+-.
+-dcterms:modified
+-  a rdf:Property ;
+-  rdfs:label "modified" ;
+-  rdfs:range xsd:date ;
+-.
+-dcterms:rights
+-  a owl:AnnotationProperty ;
+-  rdfs:label "rights" ;
+-  rdfs:range xsd:string ;
+-.
+-dcterms:source
+-  a owl:AnnotationProperty ;
+-  rdfs:isDefinedBy dcterms: ;
+-  rdfs:label "source" ;
+-  rdfs:range xsd:string ;
+-.
+-dcterms:subject
+-  a owl:AnnotationProperty ;
+-  rdfs:label "subject" ;
+-  rdfs:range xsd:string ;
+-.
+-dcterms:title
+-  a owl:AnnotationProperty ;
+-  rdfs:label "title" ;
+-  rdfs:range xsd:string ;
+-.
+ <http://qudt.org/2.1/vocab/mathematics>
+   a owl:Ontology ;
+   vaem:hasGraphMetadata qudt:GMD_QUDT-VOCAB-MATHEMATICS ;

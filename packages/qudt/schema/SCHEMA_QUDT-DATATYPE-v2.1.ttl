@@ -22,6 +22,38 @@
 @prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+dcterms:contributor
+  a owl:AnnotationProperty ;
+  rdfs:label "contributor" ;
+  rdfs:range xsd:string ;
+.
+dcterms:creator
+  a owl:AnnotationProperty ;
+  rdfs:label "creator" ;
+  rdfs:range xsd:string ;
+.
+dcterms:description
+  a owl:AnnotationProperty ;
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
+  rdfs:label "description" ;
+  rdfs:range rdf:HTML ;
+.
+dcterms:rights
+  a owl:AnnotationProperty ;
+  rdfs:label "rights" ;
+  rdfs:range xsd:string ;
+.
+dcterms:subject
+  a owl:AnnotationProperty ;
+  rdfs:label "subject" ;
+  rdfs:range xsd:string ;
+.
+dcterms:title
+  a owl:AnnotationProperty ;
+  rdfs:label "title" ;
+  rdfs:range xsd:string ;
+.
 <http://qudt.org/2.1/schema/citation#PubKinds>
   a <http://qudt.org/2.1/schema/citation#PubKind> ;
   rdfs:label "Pub kinds" ;
@@ -46,22 +78,22 @@
 <http://qudt.org/schema/datatype/GMD_datatype>
   a vaem:GraphMetaData ;
   dcterms:description "The QUDT 'Datatype' ontology is a specification of scalar and structured data types. Scalar data types are defined for all the commonly encountered forms of numbers, characters and booleans, with their representations in a number of vendor and industry specific technologies. Structured data types cover arrays, lists, trees and many other forms of composite data elements. Specification of coordinate systems is also covered." ;
-  dcterms:modified "2023-03-14T15:54:36.830-04:00"^^xsd:dateTime ;
+  dcterms:modified "2023-04-12T14:50:03.313-04:00"^^xsd:dateTime ;
   dcterms:subject "Datatypes" ;
-  vaem:graphTitle "QUDT Schema for Datatypes - Version 2.1.25" ;
+  vaem:graphTitle "QUDT Schema for Datatypes - Version 2.1.26" ;
   vaem:hasGraphRole vaem:SchemaGraph ;
   vaem:isMetadataFor <http://qudt.org/2.1/schema/datatype> ;
-  vaem:latestPublishedVersion "https://qudt.org/doc/2023/03/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
+  vaem:latestPublishedVersion "https://qudt.org/doc/2023/04/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
   vaem:logo "https://qudt.org/linkedmodels.org/assets/lib/lm/images/logos/qudt_logo-300x110.png"^^xsd:anyURI ;
   vaem:name "QUDT" ;
   vaem:namespace "http://qudt.org/schema/qudt/" ;
   vaem:namespacePrefix "qudt" ;
   vaem:owner "QUDT.ORG" ;
-  vaem:previousPublishedVersion "https://qudt.org/doc/2023/01/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
+  vaem:previousPublishedVersion "https://qudt.org/doc/2023/03/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
   vaem:publishedDate "2017-05-10"^^xsd:date ;
   vaem:releaseDate "2016-05-09"^^xsd:date ;
   vaem:revision "2.1" ;
-  vaem:title "QUDT Schema for Datatypes - Version 2.1.25" ;
+  vaem:title "QUDT Schema for Datatypes - Version 2.1.26" ;
   vaem:turtleFileURL "http://qudt.org/2.1/schema/datatype.ttl"^^xsd:anyURI ;
   vaem:usesNonImportedResource dcterms:abstract ;
   vaem:usesNonImportedResource dcterms:created ;
@@ -71,7 +103,7 @@
   vaem:usesNonImportedResource dcterms:title ;
   vaem:usesNonImportedResource <http://voag.linkedmodel.org/voag#QUDT-Attribution> ;
   vaem:withAttributionTo <http://voag.linkedmodel.org/voag#QUDT-Attribution> ;
-  rdfs:label "QUDT Schema for Datatypes - Version 2.1.25" ;
+  rdfs:label "QUDT Schema for Datatypes - Version 2.1.26" ;
 .
 qudt:AbstractDatatype
   a owl:Class ;
@@ -5553,8 +5585,8 @@ qudt:bounded
   rdfs:range xsd:boolean ;
 .
 qudt:byRow
+  a qudt:deprecatedProperty ;
   a owl:DatatypeProperty ;
-  a owl:DeprecatedProperty ;
   dcterms:description "A boolean to specify whether an array is presented row by row or column by column." ;
   vaem:rationale "Replaced with an enumeration. See type:ArrayDataOrderType" ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
@@ -6300,6 +6332,75 @@ qudt:zCoordinateDefinition
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Z-Coordinate definition" ;
   rdfs:range xsd:string ;
+.
+dtype:GMD_DTYPE
+  dcterms:description "The ontology \"dtype\" provides a specification of simple data types such as enumerations and codelists. These are needed in support of the conversion of XML Schemas and UML Models to OWL. The purpose of \"dtype\" is to provide a foundation for expressing rich data types. These data types are typically needed when dealing with OWL representations of data structures derived from XML Schema." ;
+.
+vaem:CollectionGraph
+  dcterms:description "A \"vaem:CollectionGraph\" is a graph that aggregates other graphs using \"owl:imports\" statements." ;
+.
+vaem:ConfigurationGraph
+  dcterms:description "A graph that serves as a registy or provides other parameter settings." ;
+.
+vaem:ConnectSetGraph
+  dcterms:description "A graph that specifies mapings between external data sources and a neutral model." ;
+.
+vaem:ConstraintsGraph
+  dcterms:description "A graph that is for defining constraints using SPIN." ;
+.
+vaem:ControllersGraph
+  dcterms:description "A graph that acts as a controller in an MVC-like framework." ;
+.
+vaem:CurationGraph
+  dcterms:description "A graph to hold metadata that is needed to describe, govern and provision another graph. A curation graph will likely use VOAG and VAEM for this purpose. The property \"vaem:curationGraph\" is used to link to the graph (or graphs) being curated" ;
+.
+vaem:DataGraph
+  dcterms:description "A graph that holds data instances." ;
+.
+vaem:DocumentationGraph
+  dcterms:description "A graph that is soley for the purpose of generating documentation." ;
+.
+vaem:FunctionsGraph
+  dcterms:description "A graph that defines SPIN functions." ;
+.
+vaem:GMD_VAEM
+  dcterms:description "VAEM stands for \"Vocabulary for Attaching Essential Metadata\". What VAEM regards as essential metadata is data about dates and times, confidentiality, and other characterisitic qualifiers of the ontology, but also references to where a ontology is documented and where to find ontology registration for governance, attribution and provenance. VAEM makes use of some properties from the DC terms vocabulary using the namespace prefix \"dct\"." ;
+.
+vaem:LinkSetGraph
+  dcterms:description "A graph that holds statements that specify links between resources." ;
+.
+vaem:MappingGraph
+  dcterms:description "A graph that specifies a transformation of a graph into another graph or graphs. Invariably this is a SPINMap graph using SPARQL Rules (SPIN) to express the transforms." ;
+.
+vaem:ProxyGraph
+  dcterms:description "A graph that represents an external data source, or schema, as an ontology model." ;
+.
+vaem:ReferenceDataGraph
+  dcterms:description "A graph that holds reference data." ;
+.
+vaem:RulesGraph
+  dcterms:description "A graph that holds SPIN rules." ;
+.
+vaem:SchemaGraph
+  dcterms:description "A graph that defines classes and properties for one or more namespaces." ;
+.
+vaem:ScriptGraph
+  dcterms:description "A graph that defines SWP templates that are of a general scripting nature." ;
+.
+vaem:ServicesGraph
+  dcterms:description "A graph that implements SWP services." ;
+.
+vaem:TransformsGraph
+  dcterms:description "A graph that uses SPIN to define transforms." ;
+.
+vaem:ViewGraph
+  dcterms:description "A graph that provides the access to services in an MVC-like framework." ;
+.
+vaem:VocabularyGraph
+  dcterms:description "A graph that is a controlled set of instances that define a terminology. Typically this is based on SKOS." ;
+.
+xsd:dateTime
+  dcterms:description "YYYY-MM-DDThh:mm:ss[.dd] or YYYY-DDDThh:mm:ss[.dd], where 'YYYY' is the year, 'MM' is the two-digit month, 'DD' is the two-digit day, 'DDD' is the three digit day of year, 'T' is constant, 'hh:mm:ss[.dd]' is the UTC time in hours, minutes, seconds, and optional fractional seconds. As many 'd' characters to the right of the period as required may be used to obtain the required precision. All fields require leading zeros." ;
 .
 [
   a owl:Restriction ;
