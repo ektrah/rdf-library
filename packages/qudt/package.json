@@ -26,6 +26,7 @@
   "dependencies": {
     "@rdf-library/dcmi": "*",
     "@rdf-library/dtype": "1.*",
+    "@rdf-library/om": "2.*",
     "@rdf-library/owl": "2.*",
     "@rdf-library/prov": "1.*",
     "@rdf-library/rdf": "1.*",
