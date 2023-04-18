@@ -1,5 +1,14 @@
---- vaem.ttl	2023-04-09 10:36:17.117746000 +0200
-+++ vaem.patched.ttl	2023-04-09 10:37:01.812983700 +0200
+--- vaem.ttl	2023-04-18 19:31:29.043887000 +0200
++++ vaem.patched.ttl	2023-04-18 20:24:02.396892000 +0200
+@@ -249,7 +249,7 @@
+ ns0:GMD_VAEM
+   a ns0:GraphMetaData ;
+   ns0:name "VAEM"^^xsd:string ;
+-  ns0:usesNonImportedResource dc:modified, dc:abstract, dc:created, <http://voag.linkedmodel.org/voag/CC-SHAREALIKE_3PT0-US>, dc:title, dc:author ;
++  ns0:usesNonImportedResource dc:modified, dc:abstract, dc:created, dc:title ;
+   ns0:owner "TopQuadrant, Inc."^^xsd:string ;
+   rdfs:label "VAEM Schema Version 2.0 Metadata"^^xsd:string ;
+   dc:created "2011-04-20"^^xsd:date ;
 @@ -273,24 +273,6 @@
    ns0:namespace "http://www.linkedmodel.org/schema/vaem#"^^xsd:anyURI ;
    ns0:title "Vocabulary for Attaching Essential Metadata (VAEM) - Version 2.0"^^xsd:string .
