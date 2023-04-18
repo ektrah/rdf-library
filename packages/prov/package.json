@@ -14,6 +14,8 @@
     "http://www.w3.org/ns/prov-o-inverses": "prov-o-inverses.patched.ttl"
   },
   "dependencies": {
-    "@rdf-library/owl": "2.*"
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*"
   }
 }

@@ -24,9 +24,16 @@
     "http://qudt.org/2.1/vocab/unit": "vocab/unit/VOCAB_QUDT-UNITS-ALL-v2.1.ttl"
   },
   "dependencies": {
+    "@rdf-library/dcmi": "*",
     "@rdf-library/dtype": "1.*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/prov": "1.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
     "@rdf-library/shacl": "1.*",
     "@rdf-library/skos": "1.*",
+    "@rdf-library/sp": "1.*",
+    "@rdf-library/spin": "1.*",
     "@rdf-library/spl": "1.*",
     "@rdf-library/vaem": "2.*"
   }

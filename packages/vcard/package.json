@@ -8,6 +8,8 @@
     "http://www.w3.org/2006/vcard/ns": "ns.ttl"
   },
   "dependencies": {
-    "@rdf-library/owl": "2.*"
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*"
   }
 }

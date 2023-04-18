@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
     "@rdf-library/skos": "1.*"
   }
 }

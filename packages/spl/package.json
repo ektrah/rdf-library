@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
     "@rdf-library/sp": "1.*",
     "@rdf-library/spin": "1.*"
   }

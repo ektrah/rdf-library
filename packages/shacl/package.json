@@ -9,6 +9,8 @@
     "http://www.w3.org/ns/shacl-shacl": "shacl-shacl.ttl"
   },
   "dependencies": {
-    "@rdf-library/owl": "2.*"
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*"
   }
 }

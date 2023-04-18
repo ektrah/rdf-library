@@ -12,6 +12,9 @@
     "@rdf-library/dtype": "1.*",
     "@rdf-library/owl": "2.*",
     "@rdf-library/prov": "1.*",
-    "@rdf-library/vaem": "2.*"
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
+    "@rdf-library/vaem": "2.*",
+    "@rdf-library/void": "1.*"
   }
 }

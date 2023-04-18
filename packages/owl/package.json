@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",
+    "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*"
   }
 }
