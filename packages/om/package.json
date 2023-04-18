@@ -1,0 +1,19 @@
+{
+  "name": "@rdf-library/om",
+  "version": "2.0.7",
+  "description": "OM 2: Units of Measure",
+  "license": "CC-BY-4.0",
+  "author": "Hajo Rijgersberg, Don Willems, Xin-Ying Ren, Mari Wigham, Jan Top",
+  "ontologies": {
+    "http://www.ontology-of-units-of-measure.org/resource/om-2/": "om-2.patched.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/bibo": "1.*",
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/foaf": "*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
+    "@rdf-library/skos": "1.*"
+  }
+}

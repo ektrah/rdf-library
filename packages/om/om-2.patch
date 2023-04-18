@@ -1,0 +1,22 @@
+--- om-2.ttl	2023-04-18 21:02:08.760002200 +0200
++++ om-2.patched.ttl	2023-04-18 21:14:39.513341600 +0200
+@@ -1,6 +1,4 @@
+ 
+-<http://www.w3.org/2004/02/skos/core#hiddenLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+-
+ _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx11 ;
+ 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.ontology-of-units-of-measure.org/resource/om-2/SingularUnit> .
+ 
+@@ -11570,12 +11568,6 @@
+ _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx999 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx1000 ;
+ 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.ontology-of-units-of-measure.org/resource/om-2/CelsiusScale> .
+ 
+-<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+-
+-<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+-
+-<http://purl.org/dc/elements/1.1/identifier> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+-
+ <http://www.iau.org/static/resolutions/IAU2012_English.pdf> a <http://purl.org/ontology/bibo/Standard> ;
+ 	<http://purl.org/dc/elements/1.1/creator> <http://www.wurvoc.org/bibliography/om-2/IAUDiv1WG> ;
+ 	<http://purl.org/dc/elements/1.1/date> "2012" ;
