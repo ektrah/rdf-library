@@ -1,22 +1,54 @@
---- om-2.ttl	2023-04-18 21:02:08.760002200 +0200
-+++ om-2.patched.ttl	2023-04-18 21:14:39.513341600 +0200
-@@ -1,6 +1,4 @@
- 
--<http://www.w3.org/2004/02/skos/core#hiddenLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+--- om-2.ttl	2023-04-18 21:48:28.512551900 +0200
++++ om-2.patched.ttl	2023-04-18 21:57:55.427551900 +0200
+@@ -47,8 +47,6 @@
+   a owl:AnnotationProperty ;
+   rdfs:label "abbreviation"@en, "略記"@ja ;
+   ns2:alternativeLabel "has abbreviation"@en, "略記がある"@ja .
 -
- _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx11 ;
- 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.ontology-of-units-of-measure.org/resource/om-2/SingularUnit> .
- 
-@@ -11570,12 +11568,6 @@
- _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx999 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid-9705366b18194de9a2dcb5bbab39c385-node1c3sfjt7fx1000 ;
- 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.ontology-of-units-of-measure.org/resource/om-2/CelsiusScale> .
- 
--<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+-skos:hiddenLabel a owl:AnnotationProperty .
+ ns2:unofficialLabel
+   a owl:AnnotationProperty ;
+   rdfs:label "unofficial label"@en, "非公式な記号"@ja ;
+@@ -62,42 +60,6 @@
+   ns2:alternativeLabel "has unofficial abbreviation"@en, "非公式な略記がある"@ja ;
+   rdfs:comment "Used to specify abbreviations that are used in e.g. every day speech but are not defined in any standard." ;
+   rdfs:subPropertyOf skos:hiddenLabel .
 -
--<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
--
--<http://purl.org/dc/elements/1.1/identifier> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
--
- <http://www.iau.org/static/resolutions/IAU2012_English.pdf> a <http://purl.org/ontology/bibo/Standard> ;
- 	<http://purl.org/dc/elements/1.1/creator> <http://www.wurvoc.org/bibliography/om-2/IAUDiv1WG> ;
- 	<http://purl.org/dc/elements/1.1/date> "2012" ;
+-dc11:creator a owl:AnnotationProperty .
+-dc11:identifier a owl:AnnotationProperty .
+-dc11:date a owl:AnnotationProperty .
+-dc11:isPartOf a owl:AnnotationProperty .
+-dc11:publisher a owl:AnnotationProperty .
+-dc11:subject a owl:AnnotationProperty .
+-dc11:title a owl:AnnotationProperty .
+-dc:license a owl:AnnotationProperty .
+-bibo:authorList a owl:AnnotationProperty .
+-bibo:chapter a owl:AnnotationProperty .
+-bibo:degree a owl:AnnotationProperty .
+-bibo:edition a owl:AnnotationProperty .
+-bibo:isbn10 a owl:AnnotationProperty .
+-bibo:isbn13 a owl:AnnotationProperty .
+-bibo:issuer a owl:AnnotationProperty .
+-bibo:pageEnd a owl:AnnotationProperty .
+-bibo:pageStart a owl:AnnotationProperty .
+-bibo:reproducedIn a owl:AnnotationProperty .
+-bibo:shortTitle a owl:AnnotationProperty .
+-bibo:uri a owl:AnnotationProperty .
+-bibo:volume a owl:AnnotationProperty .
+-foaf:based_near a owl:AnnotationProperty .
+-foaf:name a owl:AnnotationProperty .
+-bibo:Article a owl:Class .
+-bibo:Book a owl:Class .
+-bibo:BookSection a owl:Class .
+-bibo:Chapter a owl:Class .
+-bibo:Document a owl:Class .
+-bibo:Journal a owl:Class .
+-bibo:Standard a owl:Class .
+-bibo:Thesis a owl:Class .
+-foaf:Organization a owl:Class .
+-foaf:Person a owl:Class .
+-ns0:logo a owl:AnnotationProperty .
+-ns0:illustration a owl:AnnotationProperty .
+ ns2:Quantity
+   a owl:Class ;
+   rdfs:label "quantity"@en, "量"@ja ;

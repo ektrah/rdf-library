@@ -1,9 +1,9 @@
 {
   "name": "@rdf-library/om",
-  "version": "2.0.7",
+  "version": "2.0.39",
   "description": "OM 2: Units of Measure",
   "license": "CC-BY-4.0",
-  "author": "Hajo Rijgersberg, Don Willems, Xin-Ying Ren, Mari Wigham, Jan Top",
+  "author": "Hajo Rijgersberg, Don Willems, Jan Top",
   "ontologies": {
     "http://www.ontology-of-units-of-measure.org/resource/om-2/": "om-2.patched.ttl"
   },
