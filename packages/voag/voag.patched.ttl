@@ -15,10 +15,9 @@
 @prefix voag: <http://voag.linkedmodel.org/voag/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
 <http://voag.linkedmodel.org/2.0/schema/voag>
   rdf:type owl:Ontology ;
-  dct:author "Ralph Hodgson"^^xsd:string ;
+  dct:creator "Ralph Hodgson"^^xsd:string ;
   dct:modified "2015-03-30"^^xsd:date ;
   vaem:hasGraphMetadata voag:GMD_VOAG ;
   owl:imports <http://rdfs.org/ns/void> ;
@@ -682,7 +681,7 @@ voag:GMD_VOAG
 
 The VOAG schema has a companion VOAG reference data graph that holds license types. This specifies many common license types and their restrictions. Where a license requires attribution, VOAG provides resources that allow the attribution should be made. Documentation of this graph can be found at <a href=\"http://voag.linkedmodel.org/doc/2015/REFDATA_voag-license-types-v2.0.html\">VOAG Licenses Documentation</a>."""^^xsd:string ;
   vaem:hasGraphRole vaem:SchemaGraph ;
-  vaem:hasLicenseType <http://voag.linkedmodel.org/voag#CC-SHAREALIKE_3PT0-US> ;
+  vaem:hasLicenseType <http://voag.linkedmodel.org/voag/CC-SHAREALIKE_3PT0-US> ;
   vaem:hasOwner vaem:TopQuadrant ;
   vaem:hasSteward vaem:TopQuadrant ;
   vaem:intent "VOAG is a schema for intellectual capital rights, attribution and governance. Uses the PROVO ontology for provenance.  Typical use of the ontology is to refer to its resources, as opposed to importing the ontology."^^xsd:string ;
@@ -697,7 +696,7 @@ The VOAG schema has a companion VOAG reference data graph that holds license typ
   vaem:revision "2.0"^^xsd:string ;
   vaem:title "Vocabulary Of Attribution and Governance (VOAG) Schema Version 2.0"^^xsd:string ;
   vaem:turtleFileURL "http://voag.linkedmodel.org/2.0/schema/SCHEMA_voag-v2.0.ttl"^^xsd:anyURI ;
-  vaem:usesNonImportedResource dct:author ;
+  vaem:usesNonImportedResource dct:creator ;
   vaem:usesNonImportedResource dct:contributor ;
   vaem:usesNonImportedResource dct:description ;
   vaem:usesNonImportedResource dct:subject ;
