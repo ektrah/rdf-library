@@ -1,0 +1,17 @@
+{
+  "name": "@rdf-library/vs",
+  "version": "2011.12.12",
+  "description": "Vocabulary Status Vocabulary",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/2003/06/sw-vocab-status/ns": "vs.patched.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
+    "@rdf-library/vann": "*"
+  }
+}

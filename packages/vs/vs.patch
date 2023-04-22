@@ -1,0 +1,52 @@
+--- vs.ttl	2023-04-22 12:47:30.991674300 +0200
++++ vs.patched.ttl	2023-04-22 12:47:30.985678800 +0200
+@@ -1,5 +1,5 @@
+ @prefix owl: <http://www.w3.org/2002/07/owl#> .
+-@prefix dc11: <http://purl.org/dc/elements/1.1/> .
++@prefix dcterms: <http://purl.org/dc/terms/> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ @prefix vann: <http://purl.org/vocab/vann/> .
+@@ -8,13 +8,13 @@
+ 
+ <http://www.w3.org/2003/06/sw-vocab-status/ns>
+   a owl:Ontology ;
+-  dc11:title "SemWeb Vocab Status ontology" ;
+-  dc11:description "An RDF vocabulary for relating SW vocabulary terms to their status." ;
++  dcterms:title "SemWeb Vocab Status ontology" ;
++  dcterms:description "An RDF vocabulary for relating SW vocabulary terms to their status." ;
+   rdfs:comment "This vocabulary was created in the FOAF project, based on experience with FOAF, Dublin Core and other early RDF vocabularies. Deployment experience shows that changing namespace URIs is expensive and unrewarding, so this vocabulary provides terms to support in-place evolution of structured data vocabularies. By indicating status at the level of terms rather than vocabularies, dictionary-style, fine grained improvements become easier. Different organizations and parties can agree or disagree on the status of a vocabulary term; however the status published alongside the term may deserve special attention. Future work could include patterns for citing announcements and decisions, or using SKOS to decentralise the extension of the basic status levels."@en ;
+-  dc11:creator "Dan Brickley", "Leigh Dodds", "Libby Miller" ;
+-  dc11:contributor "Pierre-Yves Vandenbussche" ;
+-  dc11:modified "2011-12-12"^^xsd:date ;
+-  dc11:issued "2003-06-01"^^xsd:date ;
++  dcterms:creator "Dan Brickley", "Leigh Dodds", "Libby Miller" ;
++  dcterms:contributor "Pierre-Yves Vandenbussche" ;
++  dcterms:modified "2011-12-12"^^xsd:date ;
++  dcterms:issued "2003-06-01"^^xsd:date ;
+   vann:preferredNamespacePrefix "vs" ;
+   vann:preferredNamespaceUri "http://www.w3.org/2003/06/sw-vocab-status/ns#" .
+ 
+@@ -23,19 +23,19 @@
+   rdfs:label "term status" ;
+   rdfs:comment "the status of a vocabulary term, expressed as a short symbolic string; known values include 'unstable','testing', 'stable' and 'archaic'" ;
+   vs:term_status "unstable" ;
+-  rdfs:isDefinedBy vs: .
++  rdfs:isDefinedBy <http://www.w3.org/2003/06/sw-vocab-status/ns> .
+ 
+ vs:moreinfo
+   a rdf:Property ;
+   rdfs:label "more info" ;
+   rdfs:comment "more information about the status etc of a term, typically human oriented" ;
+   vs:term_status "unstable" ;
+-  rdfs:isDefinedBy vs: .
++  rdfs:isDefinedBy <http://www.w3.org/2003/06/sw-vocab-status/ns> .
+ 
+ vs:userdocs
+   a rdf:Property ;
+   rdfs:label "user docs" ;
+   rdfs:comment "human-oriented documentation, examples etc for use of this term" ;
+   vs:term_status "unstable" ;
+-  rdfs:isDefinedBy vs: .
++  rdfs:isDefinedBy <http://www.w3.org/2003/06/sw-vocab-status/ns> .
+ 
