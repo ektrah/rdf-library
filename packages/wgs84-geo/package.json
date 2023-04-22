@@ -1,0 +1,16 @@
+{
+  "name": "@rdf-library/wgs84-geo",
+  "version": "1.22.0",
+  "description": "WGS84 Geo Positioning",
+  "license": "W3C",
+  "author": "W3C",
+  "ontologies": {
+    "http://www.w3.org/2003/01/geo/wgs84_pos": "wgs84_pos.ttl"
+  },
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/foaf": "*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*"
+  }
+}
