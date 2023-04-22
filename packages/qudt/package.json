@@ -12,7 +12,7 @@
     "http://qudt.org/2.1/schema/qudt": "schema/SCHEMA_QUDT-v2.1.patched.ttl",
     "http://qudt.org/2.1/schema/shacl/overlay/qudt": "schema/shacl/SHACL-SCHEMA-SUPPLEMENT_QUDT-v2.1.ttl",
     "http://qudt.org/2.1/schema/shacl/qudt": "schema/shacl/SCHEMA_QUDT_NoOWL-v2.1.patched.ttl",
-    "http://qudt.org/2.1/vocab/constant": "vocab/constant/VOCAB_QUDT-CONSTANTS-v2.1.ttl",
+    "http://qudt.org/2.1/vocab/constant": "vocab/constants/VOCAB_QUDT-CONSTANTS-v2.1.ttl",
     "http://qudt.org/2.1/vocab/currency": "vocab/currency/VOCAB_QUDT-UNITS-CURRENCY-v2.1.ttl",
     "http://qudt.org/2.1/vocab/dimensionvector": "vocab/dimensionvectors/VOCAB_QUDT-DIMENSION-VECTORS-v2.1.ttl",
     "http://qudt.org/2.1/vocab/mathematics": "vocab/mathematics/VOCAB_QUDT-MATHEMATICS-v2.1.18.patched.ttl",
