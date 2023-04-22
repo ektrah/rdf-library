@@ -1,0 +1,27 @@
+--- dtype.ttl	2023-04-18 14:39:46.801604500 +0200
++++ dtype.patched.ttl	2023-04-22 11:59:55.294828200 +0200
+@@ -28,20 +28,20 @@
+ <http://www.linkedmodel.org/1.1/schema/dtype>
+   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+   ns0:revision "1.1"^^xsd:string ;
+-  ns0:usesNonImportedResource dc11:description, dc11:author, dc11:title, dc11:contributor, dc11:subject ;
++  ns0:usesNonImportedResource dc11:description, dc11:creator, dc11:title, dc11:contributor, dc11:subject ;
+   rdfs:label "Datatype Ontology"^^xsd:string ;
+   ns0:hasGraphRole ns0:SchemaGraph ;
+   ns0:dateCreated "2011-05-29"^^ns0:dateUnion ;
+   ns0:lastUpdated "2014-06-28"^^ns0:dateUnion ;
+   ns0:owner "TopQuadrant"^^xsd:string ;
+-  ns0:withAttributionTo <http://voag.linkedmodel.org/voag#TopQuadrantAttribution> ;
+-  dc11:author "Ralph Hodgson"^^xsd:string ;
++  ns0:withAttributionTo <http://voag.linkedmodel.org/voag/TopQuadrantAttribution> ;
++  dc11:creator "Ralph Hodgson"^^xsd:string ;
+   ns0:namespace "http://www.linkedmodel.org/schema/dtype"^^xsd:anyURI ;
+   ns0:description "The ontology \"dtype\" provides a specification of simple data types such as enumerations and codelists. These are needed in support of the conversion of XML Schemas and UML Models to OWL. The purpose of \"dtype\" is to provide a foundation for expressing rich data types. These data types are typically needed when dealing with OWL representations of data structures derived from XML Schema."^^xsd:string ;
+   dc11:subject "Datatype schema"^^xsd:string ;
+   owl:versionIRI <http://www.linkedmodel.org/1.1/schema/dtype> ;
+   ns0:namespacePrefix "dtype"^^xsd:string ;
+-  ns0:hasLicenseType <http://voag.linkedmodel.org/voag#CC-SHAREALIKE_3PT0-US> ;
++  ns0:hasLicenseType <http://voag.linkedmodel.org/voag/CC-SHAREALIKE_3PT0-US> ;
+   ns0:name "DTYPE"^^xsd:string ;
+   dc11:title "Datatype Ontology"^^xsd:string .
+ 
