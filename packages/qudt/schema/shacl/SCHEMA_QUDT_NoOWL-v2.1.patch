@@ -1,5 +1,5 @@
---- SCHEMA_QUDT_NoOWL-v2.1.ttl	2023-04-13 23:41:04.083203400 +0200
-+++ SCHEMA_QUDT_NoOWL-v2.1.patched.ttl	2023-04-13 23:51:45.793659000 +0200
+--- SCHEMA_QUDT_NoOWL-v2.1.ttl	2023-05-11 15:06:33.000000000 +0200
++++ SCHEMA_QUDT_NoOWL-v2.1.patched.ttl	2023-05-11 21:58:05.169823900 +0200
 @@ -21,53 +21,6 @@
  @prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
  @prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
@@ -54,7 +54,7 @@
  <http://qudt.org/2.1/schema/shacl/qudt>
    a owl:Ontology ;
    vaem:hasGraphMetadata vaem:GMD_SHACLQUDT-SCHEMA ;
-@@ -3336,15 +3289,6 @@
+@@ -3353,15 +3306,6 @@
    rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
    rdfs:label "QUDT Schema Catalog Entry" ;
  .
@@ -70,7 +70,7 @@
  vaem:GMD_SHACLQUDT-SCHEMA
    a vaem:GraphMetaData ;
    dcterms:contributor "Daniel Mekonnen" ;
-@@ -3412,7 +3356,3 @@
+@@ -3429,7 +3373,3 @@
    rdfs:isDefinedBy <http://qudt.org/2.1/schema/shacl/qudt> ;
    rdfs:label "QUDT" ;
  .

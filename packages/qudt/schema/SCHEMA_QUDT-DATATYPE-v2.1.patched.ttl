@@ -21,18 +21,12 @@
 @prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
 @prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-<http://qudt.org/2.1/schema/citation#PubKinds>
-  a <http://qudt.org/2.1/schema/citation#PubKind> ;
-  rdfs:label "Pub kinds" ;
-.
 <http://qudt.org/2.1/schema/datatype>
   a owl:Ontology ;
   vaem:hasCatalogEntry voag:QUDT-SchemaCatalogEntry ;
   vaem:hasGraphMetadata <http://qudt.org/schema/datatype/GMD_datatype> ;
   vaem:hasGraphRole vaem:SchemaGraph ;
   vaem:intent "This ontology is to be used by other ontologies that need to reference type definitions." ;
-  vaem:namespace "http://qudt.org/schema/dtype/" ;
-  vaem:namespacePrefix "qudt" ;
   vaem:specificity 1 ;
   vaem:url "http://qudt.org/2.0/schema/dtype"^^xsd:anyURI ;
   rdfs:label "QUDT SCHEMA - Datatypes" ;
@@ -45,22 +39,23 @@
 <http://qudt.org/schema/datatype/GMD_datatype>
   a vaem:GraphMetaData ;
   dcterms:description "The QUDT 'Datatype' ontology is a specification of scalar and structured data types. Scalar data types are defined for all the commonly encountered forms of numbers, characters and booleans, with their representations in a number of vendor and industry specific technologies. Structured data types cover arrays, lists, trees and many other forms of composite data elements. Specification of coordinate systems is also covered." ;
-  dcterms:modified "2023-04-12T14:50:03.313-04:00"^^xsd:dateTime ;
+  dcterms:modified "2023-05-10T19:09:57.507-04:00"^^xsd:dateTime ;
+  dcterms:rights "The QUDT Ontologies are issued under a Creative Commons Attribution 4.0 International License (CC BY 4.0), available at https://creativecommons.org/licenses/by/4.0/. Attribution should be made to QUDT.org" ;
   dcterms:subject "Datatypes" ;
-  vaem:graphTitle "QUDT Schema for Datatypes - Version 2.1.26" ;
+  vaem:graphTitle "QUDT Schema for Datatypes - Version 2.1.27" ;
   vaem:hasGraphRole vaem:SchemaGraph ;
   vaem:isMetadataFor <http://qudt.org/2.1/schema/datatype> ;
-  vaem:latestPublishedVersion "https://qudt.org/doc/2023/04/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
+  vaem:latestPublishedVersion "https://qudt.org/doc/2023/05/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
   vaem:logo "https://qudt.org/linkedmodels.org/assets/lib/lm/images/logos/qudt_logo-300x110.png"^^xsd:anyURI ;
   vaem:name "QUDT" ;
   vaem:namespace "http://qudt.org/schema/qudt/" ;
   vaem:namespacePrefix "qudt" ;
   vaem:owner "QUDT.ORG" ;
-  vaem:previousPublishedVersion "https://qudt.org/doc/2023/03/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
+  vaem:previousPublishedVersion "https://qudt.org/doc/2023/04/DOC_SCHEMA-DATATYPES-v2.1.html"^^xsd:anyURI ;
   vaem:publishedDate "2017-05-10"^^xsd:date ;
   vaem:releaseDate "2016-05-09"^^xsd:date ;
   vaem:revision "2.1" ;
-  vaem:title "QUDT Schema for Datatypes - Version 2.1.26" ;
+  vaem:title "QUDT Schema for Datatypes - Version 2.1.27" ;
   vaem:turtleFileURL "http://qudt.org/2.1/schema/datatype.ttl"^^xsd:anyURI ;
   vaem:usesNonImportedResource dcterms:abstract ;
   vaem:usesNonImportedResource dcterms:created ;
@@ -70,7 +65,7 @@
   vaem:usesNonImportedResource dcterms:title ;
   vaem:usesNonImportedResource <http://voag.linkedmodel.org/voag#QUDT-Attribution> ;
   vaem:withAttributionTo <http://voag.linkedmodel.org/voag#QUDT-Attribution> ;
-  rdfs:label "QUDT Schema for Datatypes - Version 2.1.26" ;
+  rdfs:label "QUDT Schema for Datatypes - Version 2.1.27" ;
 .
 qudt:AbstractDatatype
   a owl:Class ;
@@ -84,7 +79,7 @@ qudt:AbstractDatatype
 .
 qudt:AerospaceCoordinateSystem
   a owl:Class ;
-  dcterms:description "A sub-type of 'Coordinate system'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Coordinate system'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Aerospace coordinate system" ;
   rdfs:subClassOf qudt:CoordinateSystem ;
@@ -169,7 +164,7 @@ qudt:Array
 .
 qudt:ArrayDataOrderType
   a owl:Class ;
-  dcterms:description "A sub-type of 'Enumerated Value'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Enumerated Value'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Array data order type" ;
   rdfs:subClassOf qudt:EnumeratedValue ;
@@ -248,7 +243,7 @@ qudt:ArrayType-dimensionality
 qudt:ArrayType-typeMatrix
   a sh:PropertyShape ;
   sh:path qudt:typeMatrix ;
-  sh:class qudt:typeMatrix ;
+  sh:class qudt:TypeMatrix ;
   sh:maxCount 1 ;
 .
 qudt:Article
@@ -1037,7 +1032,7 @@ qudt:CompositeDatatype-padding
 .
 qudt:CompositeTable
   a owl:Class ;
-  dcterms:description "A sub-type of 'Table Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Table Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Composite Table Type" ;
   rdfs:subClassOf qudt:Table ;
@@ -1739,13 +1734,13 @@ qudt:DateTimeStringType-encoding
   sh:maxCount 1 ;
 .
 qudt:DecimalScaledUnit
-  dcterms:description "A sub-type of 'Scaled unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Scaled unit'. Detailed description to be provided in a future version." ;
 .
 qudt:DerivedCoherentUnit
-  dcterms:description "A sub-type of 'Derived Unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Derived Unit'. Detailed description to be provided in a future version." ;
 .
 qudt:DerivedNonCoherentUnit
-  dcterms:description "A sub-type of 'Derived Unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Derived Unit'. Detailed description to be provided in a future version." ;
 .
 qudt:Dictionary
   a owl:Class ;
@@ -1846,7 +1841,7 @@ qudt:Encoding-bytes
 qudt:EngineeringValueTupleMember
   a owl:Class ;
   a sh:NodeShape ;
-  dcterms:description "A sub-type of 'Tuple Member Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Tuple Member Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Engineering Value Tuple Member" ;
   rdfs:subClassOf qudt:TupleMember ;
@@ -1931,8 +1926,8 @@ qudt:Enumeration-value
   sh:class qudt:EnumeratedValue ;
 .
 qudt:EnumerationScale
-  dcterms:description "A sub-type of 'DTYPE Enumeration'. Detailed desciption to be provided in a future version." ;
-  dcterms:description "A sub-type of 'Scale'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'DTYPE Enumeration'. Detailed description to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Scale'. Detailed description to be provided in a future version." ;
 .
 qudt:FALSE
   a qudt:BooleanTypeEnumeratedValue ;
@@ -1960,7 +1955,7 @@ qudt:FT_ROTATING
 .
 qudt:FieldType
   a owl:Class ;
-  dcterms:description "A sub-type of 'Composite Data Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Composite Data Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Field Type" ;
   rdfs:subClassOf qudt:CompositeDatatype ;
@@ -2008,11 +2003,11 @@ qudt:FieldType-optional
   sh:minCount 0 ;
 .
 qudt:Figure
-  dcterms:description "A sub-type of 'QUDT Concept'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Concept'. Detailed description to be provided in a future version." ;
 .
 qudt:FileFormat
   a owl:Class ;
-  dcterms:description "A sub-type of 'Enumerated Value'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Enumerated Value'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "File format" ;
   rdfs:subClassOf qudt:EnumeratedValue ;
@@ -2120,11 +2115,11 @@ qudt:GraphType
   rdfs:subClassOf qudt:CollectionType ;
 .
 qudt:GreekCharacter
-  dcterms:description "A sub-type of 'Symbol'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Symbol'. Detailed description to be provided in a future version." ;
 .
 qudt:GroundCoordinateSystem
   a owl:Class ;
-  dcterms:description "A sub-type of 'Aerospace coordinate system'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Aerospace coordinate system'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Ground coordinate system" ;
   rdfs:subClassOf qudt:AerospaceCoordinateSystem ;
@@ -2243,10 +2238,10 @@ qudt:IERS-TN-32-2004
   skos:prefLabel "IERS-TN-32-2004" ;
 .
 qudt:IMPERIAL-DimensionVector
-  dcterms:description "A sub-type of 'Quantity Dimension Vector'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Quantity Dimension Vector'. Detailed description to be provided in a future version." ;
 .
 qudt:ISO-DimensionVector
-  dcterms:description "A sub-type of 'Quantity Dimension Vector'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Quantity Dimension Vector'. Detailed description to be provided in a future version." ;
 .
 qudt:ISO8601-UTCDateTime-BasicFormat
   a qudt:DateTimeStringEncodingType ;
@@ -2276,7 +2271,7 @@ qudt:IconicCueEnumeration-defaultValue
   sh:class qudt:IconicCue ;
 .
 qudt:ImperialUnit
-  dcterms:description "A sub-type of 'Standards unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Standards unit'. Detailed description to be provided in a future version." ;
 .
 qudt:InBook
   a qudt:PubEnumeratedType ;
@@ -2315,7 +2310,7 @@ qudt:InertialCoordinateFrame-frameType
 .
 qudt:InertialReferenceFrame
   a owl:Class ;
-  dcterms:description "A sub-type of 'Reference Frame'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Reference Frame'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Inertial reference frame" ;
   rdfs:subClassOf qudt:ReferenceFrame ;
@@ -2377,7 +2372,7 @@ qudt:IntegerVector
 .
 qudt:InterpolatedTable
   a owl:Class ;
-  dcterms:description "A sub-type of 'Table Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Table Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Interpolated Table Type" ;
   rdfs:subClassOf qudt:Table ;
@@ -2425,7 +2420,7 @@ qudt:LimitType
 .
 qudt:List
   a owl:Class ;
-  dcterms:description "A sub-type of 'Collection Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Collection Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "List" ;
   rdfs:subClassOf qudt:Collection ;
@@ -2592,7 +2587,7 @@ qudt:MATRIX-TYPE_2x4
   rdfs:label "Matrix type  2x4" ;
 .
 qudt:MKS-Unit
-  dcterms:description "A sub-type of 'Standards unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Standards unit'. Detailed description to be provided in a future version." ;
 .
 qudt:MULTi-DIMENSIONAL-ARRAY
   a qudt:MultiDimensionalArrayType ;
@@ -2600,7 +2595,7 @@ qudt:MULTi-DIMENSIONAL-ARRAY
 .
 qudt:MajorMinorType
   a owl:Class ;
-  dcterms:description "A sub-type of 'Enumerated Value'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Enumerated Value'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Major minor type" ;
   rdfs:subClassOf qudt:EnumeratedValue ;
@@ -2683,7 +2678,7 @@ qudt:MatrixType
 .
 qudt:MemoryOrderType
   a owl:Class ;
-  dcterms:description "A sub-type of 'Enumerated Value'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Enumerated Value'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Memory order type" ;
   rdfs:subClassOf qudt:EnumeratedValue ;
@@ -2712,7 +2707,7 @@ qudt:ModalCue-duration
 qudt:ModalEnumeration
   a owl:Class ;
   a sh:NodeShape ;
-  dcterms:description "A sub-type of 'QUDT Enumeration'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Enumeration'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Modal Enumeration" ;
   rdfs:subClassOf qudt:Enumeration ;
@@ -2770,7 +2765,7 @@ qudt:MultiDimensionalDataFormatType
 qudt:MultiModalEnumeration
   a owl:Class ;
   a sh:NodeShape ;
-  dcterms:description "A sub-type of 'QUDT Enumeration'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Enumeration'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Multi modal enumeration" ;
   rdfs:subClassOf qudt:Enumeration ;
@@ -2833,7 +2828,7 @@ qudt:MultiModalEnumeration-visualCueEnumeration
 qudt:MultiModalType
   a owl:Class ;
   a sh:NodeShape ;
-  dcterms:description "A sub-type of 'Enumerated Value'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Enumerated Value'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Multi Modal Type" ;
   rdfs:subClassOf qudt:EnumeratedValue ;
@@ -3170,7 +3165,7 @@ qudt:OrdinalType
   rdfs:subClassOf qudt:ScalarDatatype ;
 .
 qudt:Organization
-  dcterms:description "A sub-type of 'QUDT Concept'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Concept'. Detailed description to be provided in a future version." ;
 .
 qudt:PARTIAL-ARRAY
   a qudt:ArrayType ;
@@ -3244,7 +3239,7 @@ qudt:PositiveIntegerType
     ] ;
 .
 qudt:PrefixUnit
-  dcterms:description "A sub-type of 'Unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Unit'. Detailed description to be provided in a future version." ;
 .
 qudt:Proceedings
   a qudt:PubEnumeratedType ;
@@ -3271,12 +3266,12 @@ qudt:PubEnumeratedType
     ) ;
 .
 qudt:QuantityKindDimensionVector_SI
-  dcterms:description "A sub-type of 'Quantity Dimension Vector'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Quantity Dimension Vector'. Detailed description to be provided in a future version." ;
 .
 qudt:QuantityValueType
   a owl:Class ;
   a sh:NodeShape ;
-  dcterms:description "A sub-type of 'Dimensional Data Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Dimensional Data Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Quantity value type" ;
   rdfs:subClassOf qudt:DimensionalDatatype ;
@@ -3335,7 +3330,7 @@ qudt:RN_DECIMAL-BASE
 .
 qudt:RawValueTupleMember
   a owl:Class ;
-  dcterms:description "A sub-type of 'Tuple Member Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Tuple Member Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Raw value tuple member" ;
   rdfs:subClassOf qudt:TupleMember ;
@@ -3613,7 +3608,7 @@ qudt:ReferenceFrame-zCoordinateDefinition
 .
 qudt:RotatingReferenceFrame
   a owl:Class ;
-  dcterms:description "A sub-type of 'Reference Frame'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Reference Frame'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Rotating reference frame" ;
   rdfs:subClassOf qudt:ReferenceFrame ;
@@ -3812,7 +3807,7 @@ qudt:ScalarDatatype-rdfsDatatype
   sh:maxCount 1 ;
 .
 qudt:ScaledUnit
-  dcterms:description "A sub-type of 'Unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Unit'. Detailed description to be provided in a future version." ;
 .
 qudt:Sequence
   a owl:Class ;
@@ -4107,7 +4102,7 @@ qudt:SinglePrecisionType
 .
 qudt:SplineCalibrator
   a owl:Class ;
-  dcterms:description "A sub-type of 'Map Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Map Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Spline calibrator" ;
   rdfs:subClassOf qudt:Map ;
@@ -4119,7 +4114,7 @@ qudt:SplineCalibratorType
 .
 qudt:SplinePoint
   a owl:Class ;
-  dcterms:description "A sub-type of 'Tuple Type'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Tuple Type'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Spline point" ;
   rdfs:subClassOf qudt:Tuple ;
@@ -4130,7 +4125,7 @@ qudt:SplinePointType
   rdfs:subClassOf qudt:TupleType ;
 .
 qudt:StandardsUnit
-  dcterms:description "A sub-type of 'Unit'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Unit'. Detailed description to be provided in a future version." ;
 .
 qudt:StateSpaceMatrix
   a owl:Class ;
@@ -4344,7 +4339,7 @@ qudt:SubjectArea
   rdfs:subClassOf owl:Thing ;
 .
 qudt:Symbol
-  dcterms:description "A sub-type of 'QUDT Concept'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Concept'. Detailed description to be provided in a future version." ;
 .
 qudt:SystemModifiableParameter
   a qudt:ParameterModifiabilityType ;
@@ -4572,7 +4567,7 @@ qudt:Time-type
 .
 qudt:TimeDataType
   a owl:Class ;
-  dcterms:description "A sub-type of 'QUDT Enumeration'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Enumeration'. Detailed description to be provided in a future version." ;
   dtype:value qudt:TIME ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Time data type" ;
@@ -4649,7 +4644,7 @@ qudt:TimeSeriesArray-vector
 qudt:TimeSeriesArrayType
   a owl:Class ;
   a sh:NodeShape ;
-  rdf:comment "A Time Series Array Type is a data type that specifies the properties of arrays that hold time series data. A time series is a sequence of data points, measured at successive time intervals. The time intervals may be uniformly or non-uniformly spaced." ;
+  rdfs:comment "A Time Series Array Type is a data type that specifies the properties of arrays that hold time series data. A time series is a sequence of data points, measured at successive time intervals. The time intervals may be uniformly or non-uniformly spaced." ;
   rdfs:label "Time Series Array Type" ;
   rdfs:subClassOf qudt:ArrayType ;
   sh:property qudt:TimeSeriesArray-dimensionVector ;
@@ -4828,7 +4823,7 @@ qudt:TwoTupleType
 .
 qudt:TypeList
   a owl:Class ;
-  dcterms:description "A sub-type of 'QUDT Datatype'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'QUDT Datatype'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Type list" ;
   rdfs:subClassOf qudt:Datatype ;
@@ -5337,7 +5332,7 @@ qudt:VectorType
 qudt:VehicleCoordinateSystem
   a owl:Class ;
   a sh:NodeShape ;
-  dcterms:description "A sub-type of 'Aerospace coordinate system'. Detailed desciption to be provided in a future version." ;
+  dcterms:description "A sub-type of 'Aerospace coordinate system'. Detailed description to be provided in a future version." ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "Vehicle coordinate system" ;
   rdfs:subClassOf qudt:AerospaceCoordinateSystem ;
@@ -5552,9 +5547,9 @@ qudt:bounded
   rdfs:range xsd:boolean ;
 .
 qudt:byRow
-  a qudt:deprecatedProperty ;
   a owl:DatatypeProperty ;
   dcterms:description "A boolean to specify whether an array is presented row by row or column by column." ;
+  qudt:deprecated true ;
   vaem:rationale "Replaced with an enumeration. See type:ArrayDataOrderType" ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/datatype> ;
   rdfs:label "by row" ;

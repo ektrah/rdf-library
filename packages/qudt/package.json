@@ -1,6 +1,6 @@
 {
   "name": "@rdf-library/qudt",
-  "version": "2.1.26",
+  "version": "2.1.27",
   "description": "Quantities, Units, Dimensions, and Data Types (QUDT)",
   "license": "CC-BY-4.0",
   "author": "QUDT.org",

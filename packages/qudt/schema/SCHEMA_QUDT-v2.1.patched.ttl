@@ -22,7 +22,7 @@
   a owl:Ontology ;
   vaem:hasGraphMetadata vaem:GMD_QUDT-SCHEMA ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
-  rdfs:label "QUDT Schema - Version 2.1.26" ;
+  rdfs:label "QUDT Schema - Version 2.1.27" ;
   owl:imports <http://www.linkedmodel.org/schema/dtype> ;
   owl:imports <http://www.linkedmodel.org/schema/vaem> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
@@ -896,6 +896,11 @@ qudt:Quantifiable
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:allValuesFrom qudt:Unit ;
+      owl:onProperty qudt:hasUnit ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom qudt:Unit ;
       owl:onProperty qudt:unit ;
     ] ;
   rdfs:subClassOf [
@@ -927,6 +932,11 @@ qudt:Quantifiable
       a owl:Restriction ;
       owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
       owl:onProperty qudt:dataEncoding ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty qudt:hasUnit ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -1226,7 +1236,12 @@ qudt:QuantityValue
   rdfs:subClassOf qudt:Quantifiable ;
   rdfs:subClassOf [
       a owl:Restriction ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:maxCardinality 1 ;
+      owl:onProperty qudt:hasUnit ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality 1 ;
       owl:onProperty qudt:unit ;
     ] ;
 .
@@ -1991,9 +2006,9 @@ qudt:code
   rdfs:label "code" ;
 .
 qudt:coherentUnitOfSystem
-  a qudt:deprecatedProperty ;
   a owl:ObjectProperty ;
   dcterms:description "A coherent unit of measurement for a unit system is a defined unit that may be expressed as a product of powers of the system's base units with the proportionality factor of one. A system of units is coherent with respect to a system of quantities and equations if the system of units is chosen in such a way that the equations between numerical values have exactly the same form (including the numerical factors) as the corresponding equations between the quantities. For example, the 'newton' and the 'joule'. These two are, respectively, the force that causes one kilogram to be accelerated at 1 metre per second per  second, and the work done by 1 newton acting over 1 metre. Being coherent refers to this consistent use of 1. In the old c.g.s. system , with its base units the centimetre and the gram, the corresponding coherent units were the dyne and the erg, respectively the force that causes 1 gram to be accelerated at 1 centimetre per second per second, and the work done by 1 dyne acting over 1 centimetre. So \\(1 newton = 10^5\\,dyne\\), \\(1 joule = 10^7\\,erg\\), making each of the four compatible in a decimal sense within its respective other system, but not coherent therein."^^qudt:LatexString ;
+  qudt:deprecated true ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
   rdfs:label "is coherent unit of system" ;
   rdfs:range qudt:SystemOfUnits ;
@@ -2238,7 +2253,6 @@ qudt:exactMatch
   a owl:ObjectProperty ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
   rdfs:label "exact match" ;
-  rdfs:range qudt:Unit ;
   rdfs:subPropertyOf owl:sameAs ;
 .
 qudt:example
@@ -2396,9 +2410,9 @@ qudt:hasDimensionVector
   rdfs:range qudt:QuantityKindDimensionVector ;
 .
 qudt:hasNonCoherentUnit
-  a qudt:deprecatedProperty ;
   a owl:ObjectProperty ;
   dcterms:description "A coherent unit of measurement for a unit system is a defined unit that may be expressed as a product of powers of the system's base units with the proportionality factor of one."^^rdf:HTML ;
+  qudt:deprecated true ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
   rdfs:label "has non-coherent unit" ;
   rdfs:subPropertyOf qudt:hasDefinedUnit ;
@@ -2443,7 +2457,6 @@ qudt:hasUnit
   dcterms:description "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."^^rdf:HTML ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
   rdfs:label "has unit" ;
-  owl:inverseOf qudt:isUnitOfSystem ;
 .
 qudt:hasUnitSystem
   a owl:FunctionalProperty ;
@@ -2554,7 +2567,6 @@ qudt:isUnitOfSystem
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
   rdfs:label "is unit of system" ;
   rdfs:range qudt:SystemOfUnits ;
-  owl:inverseOf qudt:hasUnit ;
 .
 qudt:isoNormativeReference
   a owl:DatatypeProperty ;
@@ -3061,7 +3073,7 @@ vaem:GMD_QUDT-SCHEMA
 <p class=\"lm-para\">Except for unit prefixes, all units are specified in separate vocabularies. Descriptions are provided in both HTML and LaTeX formats. A quantity is a measure of an observable phenomenon, that, when associated with something, becomes a property of that thing; a particular object, event, or physical system. </p>
 
 <p class=\"lm-para\">A quantity has meaning in the context of a measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the underlying quantity kind is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific quantity of length; its magnitude that may be expressed in meters, feet, inches, etc.  Or, as stated at Wikipedia, in the language of measurement, quantities are quantifiable aspects of the world, such as time, distance, velocity, mass, momentum, energy, and weight, and units are used to describe their measure. Many of these quantities are related to each other by various physical laws, and as a result the units of some of the quantities can be expressed as products (or ratios) of powers of other units (e.g., momentum is mass times velocity and velocity is measured in distance divided by time).</p>"""^^rdf:HTML ;
-  dcterms:modified "2023-04-12T14:49:00.763-04:00"^^xsd:dateTime ;
+  dcterms:modified "2023-05-10T19:09:01.900-04:00"^^xsd:dateTime ;
   dcterms:rights """
   This product includes all or a portion of the UCUM table, UCUM codes, and UCUM definitions or is derived from it, subject to a license from Regenstrief Institute, Inc. and The UCUM Organization. Your use of the UCUM table, UCUM codes, UCUM definitions also is subject to this license, a copy of which is available at ​http://unitsofmeasure.org. The current complete UCUM table, UCUM Specification are available for download at ​http://unitsofmeasure.org. The UCUM table and UCUM codes are copyright © 1995-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization. All rights reserved.
 
@@ -3069,25 +3081,25 @@ THE UCUM TABLE (IN ALL FORMATS), UCUM DEFINITIONS, AND SPECIFICATION ARE PROVIDE
   """ ;
   dcterms:rights "The QUDT Ontologies are issued under a Creative Commons Attribution 4.0 International License (CC BY 4.0), available at https://creativecommons.org/licenses/by/4.0/. Attribution should be made to QUDT.org" ;
   dcterms:subject "QUDT" ;
-  dcterms:title "QUDT Schema - Version 2.1.26" ;
+  dcterms:title "QUDT Schema - Version 2.1.27" ;
   qudt:informativeReference "http://unitsofmeasure.org/trac"^^xsd:anyURI ;
   qudt:informativeReference "http://www.bipm.org/en/publications/si-brochure"^^xsd:anyURI ;
   qudt:informativeReference "http://www.bipm.org/utils/common/documents/jcgm/JCGM_200_2008.pdf"^^xsd:anyURI ;
   qudt:informativeReference "https://books.google.com/books?id=pIlCAAAAIAAJ&dq=dimensional+analysis&hl=en"^^xsd:anyURI ;
   qudt:informativeReference "https://www.nist.gov/physical-measurement-laboratory/special-publication-811"^^xsd:anyURI ;
   vaem:graphName "qudt" ;
-  vaem:graphTitle "Quantities, Units, Dimensions and Types (QUDT) Schema - Version 2.1.26" ;
+  vaem:graphTitle "Quantities, Units, Dimensions and Types (QUDT) Schema - Version 2.1.27" ;
   vaem:hasGraphRole vaem:SchemaGraph ;
   vaem:hasOwner vaem:QUDT ;
   vaem:hasSteward vaem:QUDT ;
   vaem:intent "Specifies the schema for quantities, units and dimensions. Types are defined in other schemas." ;
   vaem:isMetadataFor <http://qudt.org/2.1/schema/qudt> ;
-  vaem:latestPublishedVersion "https://qudt.org/doc/2023/04/DOC_SCHEMA-QUDT-v2.1.html"^^xsd:anyURI ;
+  vaem:latestPublishedVersion "https://qudt.org/doc/2023/05/DOC_SCHEMA-QUDT-v2.1.html"^^xsd:anyURI ;
   vaem:logo "https://qudt.org/linkedmodels.org/assets/lib/lm/images/logos/qudt_logo-300x110.png"^^xsd:anyURI ;
   vaem:namespace "http://qudt.org/schema/qudt/" ;
   vaem:namespacePrefix "qudt" ;
   vaem:owner "qudt.org" ;
-  vaem:previousPublishedVersion "https://qudt.org/doc/2023/03/DOC_SCHEMA-QUDT-v2.1.html"^^xsd:anyURI ;
+  vaem:previousPublishedVersion "https://qudt.org/doc/2023/04/DOC_SCHEMA-QUDT-v2.1.html"^^xsd:anyURI ;
   vaem:revision "2.1" ;
   vaem:turtleFileURL "http://qudt.org/2.1/schema/qudt"^^xsd:anyURI ;
   vaem:usesNonImportedResource dcterms:abstract ;
@@ -3102,7 +3114,7 @@ THE UCUM TABLE (IN ALL FORMATS), UCUM DEFINITIONS, AND SPECIFICATION ARE PROVIDE
   vaem:usesNonImportedResource voag:QUDT-Attribution ;
   vaem:withAttributionTo voag:QUDT-Attribution ;
   rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
-  rdfs:label "QUDT Schema - Version 2.1.26" ;
+  rdfs:label "QUDT Schema - Version 2.1.27" ;
   owl:versionIRI <http://qudt.org/2.1/schema/qudt> ;
 .
 vaem:QUDT
