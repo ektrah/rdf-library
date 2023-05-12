@@ -5,7 +5,7 @@
   "license": "W3C",
   "author": "W3C",
   "ontologies": {
-    "http://rdfs.org/ns/void": "void.ttl"
+    "http://rdfs.org/ns/void": "void.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",

@@ -1,0 +1,11 @@
+--- void.ttl	2021-05-10 10:22:18.000000000 +0200
++++ void.patched.ttl	2023-05-12 16:17:39.409128700 +0200
+@@ -160,7 +160,7 @@
+     rdfs:comment "Defines a simple URI look-up protocol for accessing a dataset.";
+     rdfs:domain void:Dataset .
+ 
+-void:uriRegexPattern a rdf:DatatypeProperty;
++void:uriRegexPattern a owl:DatatypeProperty;
+     rdfs:label "has URI regular expression pattern";
+     rdfs:comment "Defines a regular expression pattern matching URIs in the dataset.";
+     rdfs:domain void:Dataset .
