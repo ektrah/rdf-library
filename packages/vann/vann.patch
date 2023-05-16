@@ -1,6 +1,15 @@
---- vann.ttl	2023-04-09 13:02:07.141038300 +0200
-+++ vann.patched.ttl	2023-04-09 13:46:22.108533900 +0200
-@@ -18,20 +18,6 @@
+--- vann.ttl	2023-04-22 14:21:57.689839100 +0200
++++ vann.patched.ttl	2023-05-16 16:22:39.142365300 +0200
+@@ -1,8 +1,6 @@
+ @prefix owl: <http://www.w3.org/2002/07/owl#> .
+ @prefix dc: <http://purl.org/dc/terms/> .
+ @prefix ns0: <http://purl.org/vocab/vann/> .
+-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+-@prefix ns1: <http://web.resource.org/cc/> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+ 
+ <http://purl.org/vocab/vann/>
+@@ -18,20 +16,6 @@
    ns0:preferredNamespaceUri "http://purl.org/vocab/vann/" ;
    ns0:preferredNamespacePrefix "vann" .
  
