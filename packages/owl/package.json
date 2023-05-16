@@ -5,7 +5,7 @@
   "license": "W3C",
   "author": "W3C",
   "ontologies": {
-    "http://www.w3.org/2002/07/owl": "owl.ttl"
+    "http://www.w3.org/2002/07/owl": "owl.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/dcmi": "*",
