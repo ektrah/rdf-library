@@ -1,7 +1,6 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dc11: <http://purl.org/dc/elements/1.1/> .
-@prefix wot: <http://xmlns.com/wot/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ns0: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix schema: <http://schema.org/> .
@@ -14,7 +13,6 @@ foaf:
   a owl:Ontology ;
   dc11:title "Friend of a Friend (FOAF) vocabulary" ;
   dc11:description "The Friend of a Friend (FOAF) RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language." .
-
 foaf:LabelProperty
   a rdfs:Class, owl:Class ;
   ns0:term_status "unstable" ;
@@ -95,7 +93,6 @@ foaf:OnlineAccount
   rdfs:comment "An online account." ;
   rdfs:isDefinedBy foaf: ;
   rdfs:subClassOf owl:Thing .
-
 foaf:OnlineGamingAccount
   a rdfs:Class, owl:Class ;
   ns0:term_status "unstable" ;
@@ -575,7 +572,6 @@ foaf:focus
   rdfs:domain skos:Concept ;
   rdfs:range owl:Thing ;
   rdfs:isDefinedBy foaf: .
-
 foaf:isPrimaryTopicOf
   a rdf:Property, owl:InverseFunctionalProperty ;
   ns0:term_status "stable" ;
