@@ -5,7 +5,7 @@
   "license": "W3C",
   "author": "W3C",
   "ontologies": {
-    "http://www.w3.org/2006/vcard/ns": "ns.ttl"
+    "http://www.w3.org/2006/vcard/ns": "ns.patched.ttl"
   },
   "dependencies": {
     "@rdf-library/owl": "2.*",

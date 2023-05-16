@@ -1,0 +1,11 @@
+--- ns.ttl	2023-04-22 14:21:57.755079200 +0200
++++ ns.patched.ttl	2023-05-16 16:25:16.650666300 +0200
+@@ -1,8 +1,6 @@
+ @prefix : <http://www.w3.org/2006/vcard/ns#> .
+ @prefix owl: <http://www.w3.org/2002/07/owl#> .
+-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+ @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+ @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+ :Acquaintance a owl:Class ;
