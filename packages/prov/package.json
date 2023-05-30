@@ -4,7 +4,12 @@
   "description": "W3C PROVenance Interchange",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
+  "dependencies": {
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*"
+  },
+  "rdf:files": {
     "http://www.w3.org/ns/prov": "prov.patched.ttl",
     "http://www.w3.org/ns/prov-aq": "prov-aq.patched.ttl",
     "http://www.w3.org/ns/prov-dc": "prov-dc.patched.ttl",
@@ -13,9 +18,7 @@
     "http://www.w3.org/ns/prov-o": "prov-o.patched.ttl",
     "http://www.w3.org/ns/prov-o-inverses": "prov-o-inverses.patched.ttl"
   },
-  "dependencies": {
-    "@rdf-library/owl": "2.*",
-    "@rdf-library/rdf": "1.*",
-    "@rdf-library/rdfs": "1.*"
+  "rdf:prefixes": {
+    "prov": "http://www.w3.org/ns/prov#"
   }
 }

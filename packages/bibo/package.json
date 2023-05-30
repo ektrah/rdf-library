@@ -4,9 +4,6 @@
   "description": "Bibliographic Ontology (BIBO)",
   "license": "CC-BY-4.0",
   "author": "DCMI",
-  "ontologies": {
-    "http://purl.org/ontology/bibo/": "bibo.patched.ttl"
-  },
   "dependencies": {
     "@rdf-library/dcmi": "*",
     "@rdf-library/foaf": "*",
@@ -15,5 +12,11 @@
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/skos": "1.*",
     "@rdf-library/vs": "*"
+  },
+  "rdf:files": {
+    "http://purl.org/ontology/bibo/": "bibo.patched.ttl"
+  },
+  "rdf:prefixes": {
+    "bibo": "http://purl.org/ontology/bibo/"
   }
 }

@@ -4,13 +4,17 @@
   "description": "Shapes Constraint Language (SHACL)",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
-    "http://www.w3.org/ns/shacl": "shacl.ttl",
-    "http://www.w3.org/ns/shacl-shacl": "shacl-shacl.ttl"
-  },
   "dependencies": {
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*"
+  },
+  "rdf:files": {
+    "http://www.w3.org/ns/shacl": "shacl.ttl",
+    "http://www.w3.org/ns/shacl-shacl": "shacl-shacl.ttl"
+  },
+  "rdf:prefixes": {
+    "sh": "http://www.w3.org/ns/shacl#",
+    "shsh": "http://www.w3.org/ns/shacl-shacl#"
   }
 }

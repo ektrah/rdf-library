@@ -4,14 +4,20 @@
   "description": "SPARQL Inferencing Notation (SPIN) - Standard Modules Library",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
-    "http://spinrdf.org/spl": "spl.ttl"
-  },
   "dependencies": {
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/sp": "1.*",
     "@rdf-library/spin": "1.*"
+  },
+  "rdf:files": {
+    "http://spinrdf.org/spl": "spl.ttl"
+  },
+  "rdf:prefixes": {
+    "arg": "http://spinrdf.org/arg#",
+    "sp": "http://spinrdf.org/sp#",
+    "spin": "http://spinrdf.org/spin#",
+    "spl": "http://spinrdf.org/spl#"
   }
 }

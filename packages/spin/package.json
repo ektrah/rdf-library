@@ -4,14 +4,18 @@
   "description": "SPARQL Inferencing Notation (SPIN) - Modeling Vocabulary",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
-    "http://spinrdf.org/spin": "spin.ttl"
-  },
   "dependencies": {
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/sp": "1.*",
     "@rdf-library/spl": "1.*"
+  },
+  "rdf:files": {
+    "http://spinrdf.org/spin": "spin.ttl"
+  },
+  "rdf:prefixes": {
+    "sp": "http://spinrdf.org/sp#",
+    "spin": "http://spinrdf.org/spin#"
   }
 }

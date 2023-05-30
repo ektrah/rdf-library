@@ -4,9 +4,6 @@
   "description": "Vocabulary of Interlinked Datasets (VoID)",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
-    "http://rdfs.org/ns/void": "void.patched.ttl"
-  },
   "dependencies": {
     "@rdf-library/dcmi": "*",
     "@rdf-library/foaf": "*",
@@ -14,5 +11,11 @@
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/vann": "*"
+  },
+  "rdf:files": {
+    "http://rdfs.org/ns/void": "void.patched.ttl"
+  },
+  "rdf:prefixes": {
+    "void": "http://rdfs.org/ns/void#"
   }
 }

@@ -4,13 +4,16 @@
   "description": "Vocabulary for Attaching Essential Metadata (VAEM)",
   "license": "CC-BY-SA-3.0",
   "author": "TopQuadrant",
-  "ontologies": {
-    "http://www.linkedmodel.org/schema/vaem": "vaem.patched.ttl"
-  },
   "dependencies": {
     "@rdf-library/dcmi": "*",
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*"
+  },
+  "rdf:files": {
+    "http://www.linkedmodel.org/schema/vaem": "vaem.patched.ttl"
+  },
+  "rdf:prefixes": {
+    "vaem": "http://www.linkedmodel.org/schema/vaem#"
   }
 }

@@ -4,12 +4,15 @@
   "description": "SPARQL Inferencing Notation (SPIN) - SPARQL Syntax",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
-    "http://spinrdf.org/sp": "sp.ttl"
-  },
   "dependencies": {
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*"
+  },
+  "rdf:files": {
+    "http://spinrdf.org/sp": "sp.ttl"
+  },
+  "rdf:prefixes": {
+    "sp": "http://spinrdf.org/sp#"
   }
 }

@@ -4,7 +4,22 @@
   "description": "Quantities, Units, Dimensions, and Data Types (QUDT)",
   "license": "CC-BY-4.0",
   "author": "QUDT.org",
-  "ontologies": {
+  "dependencies": {
+    "@rdf-library/dcmi": "*",
+    "@rdf-library/dtype": "1.*",
+    "@rdf-library/om": "2.*",
+    "@rdf-library/owl": "2.*",
+    "@rdf-library/prov": "1.*",
+    "@rdf-library/rdf": "1.*",
+    "@rdf-library/rdfs": "1.*",
+    "@rdf-library/shacl": "1.*",
+    "@rdf-library/skos": "1.*",
+    "@rdf-library/sp": "1.*",
+    "@rdf-library/spin": "1.*",
+    "@rdf-library/spl": "1.*",
+    "@rdf-library/vaem": "2.*"
+  },
+  "rdf:files": {
     "http://qudt.org/2.1/schema/datatype": "schema/SCHEMA_QUDT-DATATYPE-v2.1.patched.ttl",
     "http://qudt.org/2.1/schema/extensions/functions": "schema/extensions/FUNCTIONS_QUDT-v2.1.spin.ttl",
     "http://qudt.org/2.1/schema/extensions/skos": "schema/extensions/SCHEMA_QUDT-skos-subset.ttl",
@@ -23,19 +38,15 @@
     "http://qudt.org/2.1/vocab/sou": "vocab/systems/VOCAB_QUDT-SYSTEM-OF-UNITS-ALL-v2.1.ttl",
     "http://qudt.org/2.1/vocab/unit": "vocab/unit/VOCAB_QUDT-UNITS-ALL-v2.1.ttl"
   },
-  "dependencies": {
-    "@rdf-library/dcmi": "*",
-    "@rdf-library/dtype": "1.*",
-    "@rdf-library/om": "2.*",
-    "@rdf-library/owl": "2.*",
-    "@rdf-library/prov": "1.*",
-    "@rdf-library/rdf": "1.*",
-    "@rdf-library/rdfs": "1.*",
-    "@rdf-library/shacl": "1.*",
-    "@rdf-library/skos": "1.*",
-    "@rdf-library/sp": "1.*",
-    "@rdf-library/spin": "1.*",
-    "@rdf-library/spl": "1.*",
-    "@rdf-library/vaem": "2.*"
+  "rdf:prefixes": {
+    "qudt": "http://qudt.org/schema/qudt/",
+    "qudt.constant": "http://qudt.org/vocab/constant/",
+    "qudt.currency": "http://qudt.org/vocab/currency/",
+    "qudt.dimensionvector": "http://qudt.org/vocab/dimensionvector/",
+    "qudt.prefix": "http://qudt.org/vocab/prefix/",
+    "qudt.quantitykind": "http://qudt.org/vocab/quantitykind/",
+    "qudt.soqk": "http://qudt.org/vocab/soqk/",
+    "qudt.sou": "http://qudt.org/vocab/sou/",
+    "qudt.unit": "http://qudt.org/vocab/unit/"
   }
 }

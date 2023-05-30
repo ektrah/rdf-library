@@ -4,16 +4,22 @@
   "description": "DCMI Metadata Terms",
   "license": "CC-BY-4.0",
   "author": "DCMI",
-  "ontologies": {
-    "http://purl.org/dc/dcam/": "dublin_core_abstract_model.ttl",
-    "http://purl.org/dc/dcmitype/": "dublin_core_type.ttl",
-    "http://purl.org/dc/elements/1.1/": "dublin_core_elements.ttl",
-    "http://purl.org/dc/terms/": "dublin_core_terms.ttl"
-  },
   "dependencies": {
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/skos": "1.*"
+  },
+  "rdf:files": {
+    "http://purl.org/dc/dcam/": "dublin_core_abstract_model.ttl",
+    "http://purl.org/dc/dcmitype/": "dublin_core_type.ttl",
+    "http://purl.org/dc/elements/1.1/": "dublin_core_elements.ttl",
+    "http://purl.org/dc/terms/": "dublin_core_terms.ttl"
+  },
+  "rdf:prefixes": {
+    "dc11": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/"
   }
 }

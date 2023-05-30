@@ -4,9 +4,6 @@
   "description": "Vocabulary Of Attribution and Governance (VOAG)",
   "license": "CC-BY-SA-3.0",
   "author": "TopQuadrant",
-  "ontologies": {
-    "http://voag.linkedmodel.org/2.0/schema/voag": "voag.patched.ttl"
-  },
   "dependencies": {
     "@rdf-library/dcmi": "*",
     "@rdf-library/dtype": "1.*",
@@ -16,5 +13,11 @@
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/vaem": "2.*",
     "@rdf-library/void": "1.*"
+  },
+  "rdf:files": {
+    "http://voag.linkedmodel.org/2.0/schema/voag": "voag.patched.ttl"
+  },
+  "rdf:prefixes": {
+    "voag": "http://voag.linkedmodel.org/voag/"
   }
 }

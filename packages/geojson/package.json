@@ -4,13 +4,16 @@
   "description": "GeoJSON-LD Vocabulary",
   "license": "CC-BY-4.0",
   "author": "Sean Gillies",
-  "ontologies": {
-    "http://purl.org/geojson/vocab": "vocab.ttl"
-  },
   "dependencies": {
     "@rdf-library/dcmi": "*",
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*"
+  },
+  "rdf:files": {
+    "http://purl.org/geojson/vocab": "vocab.ttl"
+  },
+  "rdf:prefixes": {
+    "geojson": "https://purl.org/geojson/vocab#"
   }
 }

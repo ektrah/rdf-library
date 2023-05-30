@@ -4,9 +4,6 @@
   "description": "OM 2: Units of Measure",
   "license": "CC-BY-4.0",
   "author": "Hajo Rijgersberg, Don Willems, Jan Top",
-  "ontologies": {
-    "http://www.ontology-of-units-of-measure.org/resource/om-2/": "om-2.patched.ttl"
-  },
   "dependencies": {
     "@rdf-library/bibo": "1.*",
     "@rdf-library/dcmi": "*",
@@ -15,5 +12,12 @@
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*",
     "@rdf-library/skos": "1.*"
+  },
+  "rdf:files": {
+    "http://www.ontology-of-units-of-measure.org/resource/om-2/": "om-2.patched.ttl"
+  },
+  "rdf:prefixes": {
+    "om": "http://www.ontology-of-units-of-measure.org/resource/om-2/",
+    "ombibo": "http://www.wurvoc.org/bibliography/om-2/"
   }
 }

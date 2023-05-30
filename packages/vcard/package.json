@@ -4,12 +4,15 @@
   "description": "vCard",
   "license": "W3C",
   "author": "W3C",
-  "ontologies": {
-    "http://www.w3.org/2006/vcard/ns": "ns.patched.ttl"
-  },
   "dependencies": {
     "@rdf-library/owl": "2.*",
     "@rdf-library/rdf": "1.*",
     "@rdf-library/rdfs": "1.*"
+  },
+  "rdf:files": {
+    "http://www.w3.org/2006/vcard/ns": "ns.patched.ttl"
+  },
+  "rdf:prefixes": {
+    "vcard": "http://www.w3.org/2006/vcard/ns#"
   }
 }
